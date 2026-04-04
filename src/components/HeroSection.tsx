@@ -13,8 +13,8 @@ const HeroSection = () => (
     <div className="container relative z-10 py-32">
       <div className="max-w-3xl mx-auto text-center">
         <div className="animate-fade-up">
-          <span className="inline-block px-4 py-1.5 mb-6 text-xs font-semibold tracking-wider uppercase rounded-full bg-accent/15 text-accent">
-            Web & App Development Studio
+        <span className="inline-block px-4 py-1.5 mb-6 text-xs font-semibold tracking-wider uppercase rounded-full bg-accent/15 text-accent">
+            ✦ Web & App Development Studio ✦
           </span>
         </div>
 
