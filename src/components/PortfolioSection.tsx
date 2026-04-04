@@ -1,9 +1,9 @@
 const projects = [
   {
-    title: "GreenLeaf Landscaping",
-    desc: "A modern business website with booking and service showcase for a local landscaping company.",
-    tags: ["Website", "Booking"],
-    color: "from-emerald-400/20 to-teal-500/20",
+    title: "Curry Express Indian Bistro",
+    desc: "A sleek restaurant website with online menu, location info, and ordering integration for a local Indian bistro.",
+    tags: ["Website", "Restaurant"],
+    color: "from-orange-400/20 to-red-500/20",
   },
   {
     title: "FitTrack Pro",
