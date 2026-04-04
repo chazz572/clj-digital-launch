@@ -4,22 +4,22 @@ import { Check } from "lucide-react";
 const plans = [
   {
     name: "Starter Website",
-    price: "$999",
-    timeline: "5–7 days",
+    price: "Starting at $200",
+    timeline: "1–2 days",
     features: ["Up to 5 pages", "Mobile responsive", "Contact form", "Basic SEO setup", "1 round of revisions"],
     popular: false,
   },
   {
     name: "Business Website",
-    price: "$2,499",
+    price: "Starting at $600",
     timeline: "10–14 days",
     features: ["Up to 10 pages", "Custom design", "CMS integration", "Advanced SEO", "3 rounds of revisions", "Analytics setup"],
     popular: true,
   },
   {
     name: "Custom App",
-    price: "From $5,000",
-    timeline: "3–6 weeks",
+    price: "Let's Talk",
+    timeline: "Reach out and let us know what you need",
     features: ["Full-stack development", "Custom UI/UX design", "API integrations", "User authentication", "Ongoing support", "Unlimited revisions"],
     popular: false,
   },
