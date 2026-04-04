@@ -16,7 +16,7 @@ const Navbar = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-card/80 backdrop-blur-lg border-b border-border">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border">
       <div className="container flex items-center justify-between h-16">
         <a href="#" className="group flex items-center gap-1">
           <span className="text-2xl font-black tracking-tighter bg-gradient-to-r from-accent via-primary to-accent bg-clip-text text-transparent drop-shadow-sm transition-all duration-300 group-hover:tracking-normal">
