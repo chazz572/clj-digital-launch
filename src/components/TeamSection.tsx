@@ -2,8 +2,8 @@ import { Phone, Mail } from "lucide-react";
 
 const members = [
   { letter: "C", name: "Chase", phone: "8174705256", email: "chase.simpson@aol.com" },
-  { letter: "L", name: "Logan", phone: "8179460780", email: "loganeberlewalter@gmail.com" },
   { letter: "J", name: "Justin", phone: "6197801789", email: "justin.resendez16@gmail.com" },
+  { letter: "L", name: "Logan", phone: "8179460780", email: "loganeberlewalter@gmail.com" },
 ];
 
 const TeamSection = () => (
