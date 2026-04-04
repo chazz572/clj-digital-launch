@@ -24,7 +24,7 @@ const HeroSection = () => (
         </h1>
 
         <p className="animate-fade-up-delay text-lg sm:text-xl text-primary-foreground/70 mb-10 max-w-2xl mx-auto leading-relaxed">
-          CLJ helps businesses launch clean, modern digital experiences without the hassle. From simple sites to full-stack apps — we've got you covered.
+          CJL helps businesses launch clean, modern digital experiences without the hassle. From simple sites to full-stack apps — we've got you covered.
         </p>
 
         <div className="animate-fade-up-delay-2 flex flex-col sm:flex-row gap-4 justify-center">

@@ -13,7 +13,7 @@ const WhySection = () => (
   <section id="why" className="py-24 bg-muted/50">
     <div className="container">
       <div className="max-w-3xl mx-auto text-center mb-16">
-        <span className="text-sm font-semibold tracking-wider uppercase text-accent">Why Choose CLJ</span>
+        <span className="text-sm font-semibold tracking-wider uppercase text-accent">Why Choose CJL</span>
         <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-foreground mt-2">
           Built Different. Built Better.
         </h2>

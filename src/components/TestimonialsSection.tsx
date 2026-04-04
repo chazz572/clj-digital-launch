@@ -1,9 +1,9 @@
 import { Star } from "lucide-react";
 
 const testimonials = [
-  { name: "Rajesh Patel", role: "Owner, Indian Restaurant", text: "CLJ built our restaurant website in just one day. It looks incredible, customers love the online menu, and our takeout orders have doubled since launch!" },
+  { name: "Rajesh Patel", role: "Owner, Indian Restaurant", text: "CJL built our restaurant website in just one day. It looks incredible, customers love the online menu, and our takeout orders have doubled since launch!" },
   { name: "David Park", role: "Founder, Fitness Startup", text: "They delivered our fitness app exactly how we envisioned it. Professional, fast, and easy to work with." },
-  { name: "Maria Gonzalez", role: "CEO, Consulting Firm", text: "Our old site was embarrassing. CLJ gave us a clean, modern presence that actually wins clients." },
+  { name: "Maria Gonzalez", role: "CEO, Consulting Firm", text: "Our old site was embarrassing. CJL gave us a clean, modern presence that actually wins clients." },
 ];
 
 const TestimonialsSection = () => (
