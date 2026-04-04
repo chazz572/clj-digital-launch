@@ -1,7 +1,7 @@
 import { Star } from "lucide-react";
 
 const testimonials = [
-  { name: "Sarah Mitchell", role: "Owner, Bloom Bakery", text: "CLJ built our website in just 10 days. It looks amazing, loads fast, and our online orders went up 40%!" },
+  { name: "Rajesh Patel", role: "Owner, Curry Express Indian Bistro", text: "CLJ built our restaurant website in just one day. It looks incredible, customers love the online menu, and our takeout orders have doubled since launch!" },
   { name: "David Park", role: "Founder, ParkFit", text: "They delivered our fitness app exactly how we envisioned it. Professional, fast, and easy to work with." },
   { name: "Maria Gonzalez", role: "CEO, BrightPath Consulting", text: "Our old site was embarrassing. CLJ gave us a clean, modern presence that actually wins clients." },
 ];
