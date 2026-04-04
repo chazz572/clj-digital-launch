@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 
@@ -14,9 +14,16 @@ const navLinks = [
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-card/80 backdrop-blur-lg border-b border-border">
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "bg-card/95 backdrop-blur-lg border-b border-border shadow-lg" : "bg-transparent border-b border-transparent"}`}>
       <div className="container flex items-center justify-between h-16">
         <a href="#" className="group flex items-center gap-1">
           <span className="text-2xl font-black tracking-tighter bg-gradient-to-r from-accent via-primary to-accent bg-clip-text text-transparent drop-shadow-sm transition-all duration-300 group-hover:tracking-normal">
