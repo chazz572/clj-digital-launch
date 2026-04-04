@@ -21,7 +21,7 @@ const ContactSection = () => {
         <div className="text-center mb-16">
           <span className="text-sm font-semibold tracking-wider uppercase text-accent">Contact</span>
           <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-foreground mt-2">
-            Let's Build Something Great
+            Get In Touch
           </h2>
           <p className="text-muted-foreground mt-4">
             Tell us about your project and we'll get back to you within 24 hours.

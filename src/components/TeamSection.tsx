@@ -2,8 +2,8 @@ import { Phone, Mail } from "lucide-react";
 
 const members = [
   { letter: "C", name: "Chase", phone: "8174705256", email: "chase.simpson@aol.com" },
-  { letter: "L", name: "Logan", phone: "8179460780", email: "loganeberlewalter@gmail.com" },
   { letter: "J", name: "Justin", phone: "6197801789", email: "justin.resendez16@gmail.com" },
+  { letter: "L", name: "Logan", phone: "8179460780", email: "loganeberlewalter@gmail.com" },
 ];
 
 const TeamSection = () => (
@@ -12,7 +12,7 @@ const TeamSection = () => (
       <div className="text-center mb-12">
         <span className="text-sm font-semibold tracking-wider uppercase text-accent">The Team</span>
         <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-foreground mt-2">
-          Meet <span className="text-gradient">C</span>hase, <span className="text-gradient">L</span>ogan & <span className="text-gradient">J</span>ustin
+          Meet <span className="text-gradient">C</span>hase, <span className="text-gradient">J</span>ustin & <span className="text-gradient">L</span>ogan
         </h2>
       </div>
 
