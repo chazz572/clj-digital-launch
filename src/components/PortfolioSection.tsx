@@ -1,21 +1,25 @@
+import curryImg from "@/assets/portfolio-curry-express.jpg";
+import fittrackImg from "@/assets/portfolio-fittrack.jpg";
+import invoiceImg from "@/assets/portfolio-invoiceflow.jpg";
+
 const projects = [
   {
     title: "Curry Express Indian Bistro",
     desc: "A sleek restaurant website with online menu, location info, and ordering integration for a local Indian bistro.",
     tags: ["Website", "Restaurant"],
-    color: "from-orange-400/20 to-red-500/20",
+    img: curryImg,
   },
   {
     title: "FitTrack Pro",
     desc: "A cross-platform fitness app with workout tracking, progress charts, and social features.",
     tags: ["Mobile App", "Full-Stack"],
-    color: "from-blue-400/20 to-indigo-500/20",
+    img: fittrackImg,
   },
   {
     title: "InvoiceFlow",
     desc: "A web app for freelancers to create, send, and track invoices with automated reminders.",
     tags: ["Web App", "Automation"],
-    color: "from-amber-400/20 to-orange-500/20",
+    img: invoiceImg,
   },
 ];
 
@@ -39,8 +43,15 @@ const PortfolioSection = () => (
             className="group rounded-xl overflow-hidden bg-card border border-border hover:border-accent/30 transition-all duration-300"
             style={{ boxShadow: "var(--card-shadow)" }}
           >
-            <div className={`h-48 bg-gradient-to-br ${p.color} flex items-center justify-center`}>
-              <span className="text-4xl font-extrabold text-foreground/10">{p.title.charAt(0)}</span>
+            <div className="h-48 overflow-hidden">
+              <img
+                src={p.img}
+                alt={p.title}
+                width={960}
+                height={640}
+                loading="lazy"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
             </div>
             <div className="p-6">
               <h3 className="text-lg font-bold text-foreground mb-2">{p.title}</h3>
