@@ -1,7 +1,7 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 const faqs = [
-  { q: "How long does a typical project take?", a: "Most of our projects only take us 1 day, but some can take up to 3 days depending on complexity." },
+  { q: "How long does a typical project take?", a: "Websites usually only take us 1 day. Mobile apps can take up to 1 week depending on complexity." },
   { q: "What's included in the price?", a: "Design, development, revisions, testing, and deployment. We provide everything you need to launch." },
   { q: "Can I request changes after the site is live?", a: "Absolutely! We offer revision rounds during the project and ongoing maintenance plans after launch." },
   { q: "Do you handle hosting and domains?", a: "We can help you set up hosting and domains, or deploy to your preferred platform. We'll guide you through the process." },
