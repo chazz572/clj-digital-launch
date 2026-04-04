@@ -32,7 +32,7 @@ const TeamSection = () => (
                 <Phone className="w-4 h-4 text-accent" />
                 {m.phone.replace(/(\d{3})(\d{3})(\d{4})/, "($1) $2-$3")}
               </a>
-              <a href={`mailto:${m.email}`} className="flex items-center justify-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors break-all">
+              <a href={`mailto:${m.email}`} className="flex items-center justify-center gap-2 text-xs text-muted-foreground hover:text-foreground transition-colors whitespace-nowrap">
                 <Mail className="w-4 h-4 text-accent shrink-0" />
                 {m.email}
               </a>
