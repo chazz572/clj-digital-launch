@@ -20,7 +20,7 @@ const Navbar = () => {
       <div className="container flex items-center justify-between h-16">
         <a href="#" className="group flex items-center gap-1">
           <span className="text-2xl font-black tracking-tighter bg-gradient-to-r from-accent via-primary to-accent bg-clip-text text-transparent drop-shadow-sm transition-all duration-300 group-hover:tracking-normal">
-            CLJ
+            CJL
           </span>
           <span className="text-2xl font-black text-accent animate-pulse">.</span>
         </a>

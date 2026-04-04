@@ -13,7 +13,7 @@ const Footer = () => (
         </div>
       </div>
       <div className="mt-8 pt-8 border-t border-primary-foreground/10 text-center text-xs text-primary-foreground/40">
-        © {new Date().getFullYear()} CLJ. All rights reserved.
+        © {new Date().getFullYear()} CJL. All rights reserved.
       </div>
     </div>
   </footer>
