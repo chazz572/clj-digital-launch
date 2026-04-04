@@ -12,7 +12,7 @@ const plans = [
   {
     name: "Business Website",
     price: "Starting at $600",
-    timeline: "10–14 days",
+    timeline: "2–3 days",
     features: ["Up to 10 pages", "Custom design", "CMS integration", "Advanced SEO", "3 rounds of revisions", "Analytics setup"],
     popular: true,
   },
