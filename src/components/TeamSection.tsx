@@ -10,7 +10,7 @@ const TeamSection = () => (
   <section id="contact" className="py-20 bg-background">
     <div className="container max-w-4xl">
       <div className="text-center mb-12">
-        <span className="text-sm font-semibold tracking-wider uppercase text-accent">Contacts</span>
+        <span className="text-sm font-semibold tracking-wider uppercase text-accent">Contact</span>
         <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-foreground mt-2">
           Meet <span className="text-gradient">C</span>hase, <span className="text-gradient">J</span>ustin & <span className="text-gradient">L</span>ogan
         </h2>
