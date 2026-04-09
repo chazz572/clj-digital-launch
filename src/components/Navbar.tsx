@@ -30,9 +30,10 @@ const Navbar = () => {
       transition={{ duration: 0.6, ease: "easeOut" }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-primary/80 dark:bg-primary/80 backdrop-blur-xl border-b border-accent/10 shadow-[0_4px_30px_-10px_hsl(190_90%_50%/0.15)]"
-          : "bg-primary/40 dark:bg-primary/40 backdrop-blur-md border-b border-transparent"
+          ? "backdrop-blur-xl border-b border-accent/10 shadow-[0_4px_30px_-10px_hsl(190_90%_50%/0.15)]"
+          : "backdrop-blur-md border-b border-transparent"
       }`}
+      style={{ backgroundColor: scrolled ? "hsla(215, 70%, 14%, 0.9)" : "hsla(215, 70%, 14%, 0.4)" }}
     >
       <div className={`container flex items-center justify-between transition-all duration-500 ${scrolled ? "h-14" : "h-18 py-5"}`}>
         <a href="#" className="group flex items-center gap-0.5">
