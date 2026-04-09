@@ -2,12 +2,11 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { motion } from "framer-motion";
 
 const faqs = [
-  { q: "How long does a typical project take?", a: "Websites usually only take us 1 day. Mobile apps can take up to 1 week depending on complexity." },
-  { q: "What's included in the price?", a: "Design, development, revisions, testing, and deployment. We provide everything you need to launch." },
-  { q: "Can I request changes after the site is live?", a: "Absolutely! We offer revision rounds during the project and ongoing maintenance plans after launch." },
-  { q: "Do you handle hosting and domains?", a: "We can help you set up hosting and domains, or deploy to your preferred platform. We'll guide you through the process." },
-  { q: "What technologies do you use?", a: "We work with React, Next.js, React Native, Node.js, and modern cloud infrastructure. We pick the best tools for your project." },
-  { q: "Do you offer ongoing maintenance?", a: "Yes! We offer monthly maintenance plans that include updates, bug fixes, and small improvements." },
+  { q: "How long does a website take?", a: "Most websites are completed within 1–3 days depending on complexity. We move fast without cutting corners." },
+  { q: "Do you offer monthly plans?", a: "Yes! We offer affordable monthly maintenance and support plans to keep your site updated and running smoothly." },
+  { q: "What's included?", a: "Design, development, mobile optimization, SEO setup, and deployment. Everything you need to launch." },
+  { q: "Do you build apps?", a: "Yes — we build custom web and mobile applications tailored to your business needs." },
+  { q: "What makes your websites different?", a: "We combine modern design, AI‑powered tools, and conversion‑focused strategy to build websites that actually grow your business." },
 ];
 
 const FAQSection = () => (

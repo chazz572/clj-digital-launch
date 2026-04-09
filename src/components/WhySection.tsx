@@ -2,12 +2,13 @@ import { CheckCircle2 } from "lucide-react";
 import { motion } from "framer-motion";
 
 const reasons = [
-  "Fast turnaround — most projects in 1–3 weeks",
-  "Affordable pricing — no agency markups",
-  "Clean, modern designs that impress",
-  "Built with scalability in mind",
-  "Perfect for businesses with no website or outdated sites",
-  "Ongoing support and maintenance available",
+  "Fast turnaround",
+  "AI‑powered tools included",
+  "Modern animated designs",
+  "Built for conversions",
+  "Mobile‑first",
+  "SEO‑ready",
+  "Affordable monthly plans",
 ];
 
 const WhySection = () => (
@@ -25,15 +26,12 @@ const WhySection = () => (
         className="max-w-3xl mx-auto text-center mb-16"
       >
         <span className="inline-block px-4 py-1.5 text-xs font-semibold tracking-[0.2em] uppercase text-accent bg-accent/10 rounded-full border border-accent/20 mb-4">
-          Why Choose CJL
+          Why Choose Us
         </span>
         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-foreground mt-4">
           Built Different.{" "}
           <span className="text-gradient">Built Better.</span>
         </h2>
-        <p className="text-muted-foreground mt-6 text-lg">
-          We're a lean team that delivers enterprise-quality work at startup speed.
-        </p>
       </motion.div>
 
       <div className="grid sm:grid-cols-2 gap-4 max-w-3xl mx-auto">
