@@ -112,10 +112,16 @@
 
   /* Glass card */
   .glass-card {
-    background: hsl(var(--card) / 0.6);
+    background: hsl(var(--card) / 0.7);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border: 1px solid hsl(var(--border) / 0.5);
+    box-shadow: var(--card-shadow);
+  }
+  .dark .glass-card {
+    background: hsl(var(--card) / 0.5);
+    border: 1px solid hsl(var(--accent) / 0.08);
+    box-shadow: var(--card-shadow), inset 0 1px 0 hsl(var(--accent) / 0.05);
   }
 
   /* Premium glow button */
