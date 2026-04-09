@@ -57,18 +57,33 @@ const HeroSection = () => (
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.15 }}
-          className="text-4xl sm:text-5xl lg:text-7xl font-extrabold tracking-tight text-primary-foreground leading-[1.05] mb-8"
+          className="text-4xl sm:text-5xl lg:text-7xl font-extrabold tracking-tight text-primary-foreground leading-[1.08] mb-8"
         >
-          Websites & Apps Built{" "}
-          <span className="text-gradient relative">
-            Fast, Built Right.
-            <motion.span
-              className="absolute -bottom-2 left-0 w-full h-[3px] bg-gradient-to-r from-accent via-accent/60 to-transparent rounded-full"
-              initial={{ scaleX: 0 }}
-              animate={{ scaleX: 1 }}
-              transition={{ duration: 0.8, delay: 0.8 }}
-              style={{ transformOrigin: "left" }}
-            />
+          <span className="block">Websites & Apps</span>
+          <span className="block mt-1 sm:mt-2">
+            Built{" "}
+            <span className="relative inline-block">
+              <span className="text-gradient">Fast</span>
+              <motion.span
+                className="absolute -bottom-1 left-0 w-full h-[3px] bg-gradient-to-r from-accent to-accent/40 rounded-full"
+                initial={{ scaleX: 0 }}
+                animate={{ scaleX: 1 }}
+                transition={{ duration: 0.6, delay: 0.8 }}
+                style={{ transformOrigin: "left" }}
+              />
+            </span>
+            <span className="text-primary-foreground/40">,</span> Built{" "}
+            <span className="relative inline-block">
+              <span className="text-gradient">Right</span>
+              <motion.span
+                className="absolute -bottom-1 left-0 w-full h-[3px] bg-gradient-to-r from-accent/40 to-accent rounded-full"
+                initial={{ scaleX: 0 }}
+                animate={{ scaleX: 1 }}
+                transition={{ duration: 0.6, delay: 1.1 }}
+                style={{ transformOrigin: "left" }}
+              />
+            </span>
+            <span className="text-gradient text-5xl sm:text-6xl lg:text-8xl leading-none">.</span>
           </span>
         </motion.h1>
 
