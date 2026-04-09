@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 
 const Footer = () => (
-  <footer className="relative py-16 overflow-hidden" style={{ background: "linear-gradient(180deg, hsl(215 70% 10%) 0%, hsl(220 60% 8%) 100%)" }}>
+  <footer className="relative py-16 overflow-hidden bg-primary text-primary-foreground">
     {/* Subtle glow */}
     <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[400px] h-[2px] bg-gradient-to-r from-transparent via-accent/30 to-transparent" />
     <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[300px] h-[60px] bg-accent/5 blur-[40px]" />
