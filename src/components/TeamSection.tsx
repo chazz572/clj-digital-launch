@@ -1,8 +1,8 @@
-import { Phone, Mail } from "lucide-react";
+import { Phone, Mail, Linkedin } from "lucide-react";
 import { motion } from "framer-motion";
 
 const members = [
-  { letter: "C", name: "Chase", phone: "8174705256", email: "chase.simpson@aol.com" },
+  { letter: "C", name: "Chase", phone: "8174705256", email: "chase.simpson@aol.com", linkedin: "https://www.linkedin.com/in/chase-simpson-b6a200370" },
   { letter: "J", name: "Justin", phone: "6197801789", email: "justin.resendez16@gmail.com" },
   { letter: "L", name: "Logan", phone: "8179460780", email: "loganeberlewalter@gmail.com" },
 ];
@@ -56,6 +56,12 @@ const TeamSection = () => (
                 <Mail className="w-4 h-4 text-accent shrink-0 group-hover:scale-110 transition-transform" />
                 {m.email}
               </a>
+              {m.linkedin && (
+                <a href={m.linkedin} target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors duration-300">
+                  <Linkedin className="w-4 h-4 text-accent group-hover:scale-110 transition-transform" />
+                  LinkedIn
+                </a>
+              )}
             </div>
           </motion.div>
         ))}
