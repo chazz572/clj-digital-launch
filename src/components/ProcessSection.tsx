@@ -1,10 +1,11 @@
-import { MessageSquare, PenTool, Rocket } from "lucide-react";
+import { MessageSquare, PenTool, Rocket, Headphones } from "lucide-react";
 import { motion } from "framer-motion";
 
 const steps = [
-  { icon: MessageSquare, step: "01", title: "Tell Us What You Need", desc: "Share your vision and goals. We'll discuss scope, timeline, and budget." },
-  { icon: PenTool, step: "02", title: "We Design & Build", desc: "Our team crafts a beautiful, functional product with regular check-ins." },
-  { icon: Rocket, step: "03", title: "You Launch with Confidence", desc: "We deploy, test, and hand off everything — ready for the world." },
+  { icon: MessageSquare, step: "01", title: "Discovery Call", desc: "We learn about your business, goals, and vision." },
+  { icon: PenTool, step: "02", title: "Design & Build", desc: "We craft a stunning, high‑converting website tailored to you." },
+  { icon: Rocket, step: "03", title: "Launch & Optimize", desc: "We deploy, test, and fine‑tune everything for performance." },
+  { icon: Headphones, step: "04", title: "Ongoing Support", desc: "We keep your site updated, fast, and generating results." },
 ];
 
 const ProcessSection = () => (
@@ -30,9 +31,8 @@ const ProcessSection = () => (
         </h2>
       </motion.div>
 
-      <div className="grid md:grid-cols-3 gap-10 max-w-5xl mx-auto relative">
-        {/* Connecting line */}
-        <div className="hidden md:block absolute top-16 left-[20%] right-[20%] h-px">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-5xl mx-auto relative">
+        <div className="hidden lg:block absolute top-16 left-[15%] right-[15%] h-px">
           <motion.div
             initial={{ scaleX: 0 }}
             whileInView={{ scaleX: 1 }}
@@ -49,18 +49,18 @@ const ProcessSection = () => (
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.6, delay: i * 0.2 }}
+            transition={{ duration: 0.6, delay: i * 0.15 }}
             className="relative text-center"
           >
             <motion.div
               whileHover={{ scale: 1.1, transition: { duration: 0.3 } }}
-              className="w-24 h-24 rounded-2xl bg-accent/10 flex items-center justify-center mx-auto mb-8 border border-accent/20 shadow-[0_0_30px_hsl(190_90%_50%/0.1)]"
+              className="w-20 h-20 rounded-2xl bg-accent/10 flex items-center justify-center mx-auto mb-6 border border-accent/20 shadow-[0_0_30px_hsl(190_90%_50%/0.1)]"
             >
-              <s.icon className="w-10 h-10 text-accent" />
+              <s.icon className="w-8 h-8 text-accent" />
             </motion.div>
             <span className="text-xs font-bold tracking-[0.2em] text-accent uppercase">Step {s.step}</span>
-            <h3 className="text-xl font-bold text-foreground mt-3 mb-3">{s.title}</h3>
-            <p className="text-sm text-muted-foreground leading-relaxed max-w-xs mx-auto">{s.desc}</p>
+            <h3 className="text-lg font-bold text-foreground mt-2 mb-2">{s.title}</h3>
+            <p className="text-sm text-muted-foreground leading-relaxed max-w-[200px] mx-auto">{s.desc}</p>
           </motion.div>
         ))}
       </div>

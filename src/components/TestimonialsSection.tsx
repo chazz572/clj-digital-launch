@@ -2,9 +2,8 @@ import { Star } from "lucide-react";
 import { motion } from "framer-motion";
 
 const testimonials = [
-  { name: "Rajesh Patel", role: "Owner, Indian Restaurant", text: "CJL built our restaurant website in just one day. It looks incredible, customers love the online menu, and our takeout orders have doubled since launch!" },
-  { name: "Lyss", role: "Owner, LashedByLyss", text: "CJL built a beautiful website for my lash business. It's clean, easy to navigate, and my clients love being able to book directly from the site!" },
-  { name: "Maria Gonzalez", role: "CEO, Consulting Firm", text: "Our old site was embarrassing. CJL gave us a clean, modern presence that actually wins clients." },
+  { name: "Client Name", role: "Business Owner", text: "CJL completely transformed our online presence. The website looks incredible, loads fast, and has already brought in new customers. Highly recommend!" },
+  { name: "Client Name", role: "Founder & CEO", text: "Professional, fast, and easy to work with. They delivered a stunning website that exceeded our expectations — and at an unbeatable price." },
 ];
 
 const TestimonialsSection = () => (
@@ -31,10 +30,10 @@ const TestimonialsSection = () => (
         </h2>
       </motion.div>
 
-      <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+      <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
         {testimonials.map((t, i) => (
           <motion.div
-            key={t.name}
+            key={i}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
@@ -42,12 +41,10 @@ const TestimonialsSection = () => (
             whileHover={{ y: -6, transition: { duration: 0.3 } }}
             className="relative p-8 rounded-2xl glass-card gradient-border transition-shadow duration-500 hover:shadow-[0_20px_60px_-15px_hsl(190_90%_50%/0.12)]"
           >
-            {/* Quote mark */}
             <span className="absolute top-4 right-6 text-6xl font-serif text-accent/10 leading-none">"</span>
-
             <div className="flex gap-1 mb-6">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} className="w-4 h-4 fill-accent text-accent" />
+              {[...Array(5)].map((_, j) => (
+                <Star key={j} className="w-4 h-4 fill-accent text-accent" />
               ))}
             </div>
             <p className="text-sm text-muted-foreground leading-relaxed mb-8">"{t.text}"</p>

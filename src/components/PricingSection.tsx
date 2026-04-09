@@ -5,23 +5,20 @@ import { motion } from "framer-motion";
 const plans = [
   {
     name: "Starter Website",
-    price: "Starting at $200",
-    timeline: "1–2 days",
-    features: ["Up to 5 pages", "Mobile responsive", "Contact form", "Basic SEO setup", "1 round of revisions"],
+    price: "$200",
+    features: ["Up to 5 pages", "Mobile responsive", "Contact form", "Basic SEO"],
     popular: false,
   },
   {
     name: "Business Website",
-    price: "Starting at $600",
-    timeline: "2–3 days",
-    features: ["Up to 10 pages", "Custom design", "CMS integration", "Advanced SEO", "3 rounds of revisions", "Analytics setup"],
+    price: "$200",
+    features: ["Up to 10 pages", "Custom design", "CMS integration", "Advanced SEO", "Analytics setup"],
     popular: true,
   },
   {
-    name: "Custom App",
-    price: "Let's Talk",
-    timeline: "Reach out and let us know what you need",
-    features: ["Full-stack development", "Custom UI/UX design", "API integrations", "User authentication", "Ongoing support", "Unlimited revisions"],
+    name: "AI‑Powered Website",
+    price: "$200",
+    features: ["Everything in Business", "AI tools included", "Lead automation", "Booking system", "Ongoing support"],
     popular: false,
   },
 ];
@@ -48,7 +45,7 @@ const PricingSection = () => (
           <span className="text-gradient">Pricing</span>
         </h2>
         <p className="text-muted-foreground mt-6 max-w-xl mx-auto text-lg">
-          No hidden fees. No surprise invoices. Just great work at a fair price.
+          All websites are $200. No hidden fees. No surprises.
         </p>
       </motion.div>
 
@@ -78,10 +75,9 @@ const PricingSection = () => (
               </motion.span>
             )}
             <h3 className="text-lg font-bold text-foreground">{p.name}</h3>
-            <div className="mt-6 mb-2">
+            <div className="mt-6 mb-6">
               <span className="text-3xl font-extrabold text-foreground">{p.price}</span>
             </div>
-            <p className="text-xs text-muted-foreground mb-8">Estimated: {p.timeline}</p>
 
             <ul className="space-y-4 mb-10">
               {p.features.map((f) => (
