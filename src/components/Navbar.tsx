@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
   { label: "Services", href: "#services" },
   { label: "Why CJL", href: "#why" },
-  { label: "Work", href: "#portfolio" },
   { label: "Process", href: "#process" },
   { label: "Pricing", href: "#pricing" },
   { label: "FAQ", href: "#faq" },
@@ -23,56 +23,76 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "bg-card/95 backdrop-blur-lg border-b border-border shadow-lg" : "bg-transparent border-b border-transparent"}`}>
-      <div className="container flex items-center justify-between h-16">
-        <a href="#" className="group flex items-center gap-1">
-          <span className="text-2xl font-black tracking-tighter bg-gradient-to-r from-accent via-primary to-accent bg-clip-text text-transparent drop-shadow-sm transition-all duration-300 group-hover:tracking-normal">
+    <motion.nav
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        scrolled
+          ? "bg-primary/80 backdrop-blur-xl border-b border-accent/10 shadow-[0_4px_30px_-10px_hsl(190_90%_50%/0.15)]"
+          : "bg-primary/40 backdrop-blur-md border-b border-transparent"
+      }`}
+    >
+      <div className={`container flex items-center justify-between transition-all duration-500 ${scrolled ? "h-14" : "h-18 py-5"}`}>
+        <a href="#" className="group flex items-center gap-0.5">
+          <span className="text-2xl font-black tracking-tighter text-gradient drop-shadow-sm transition-all duration-300 group-hover:tracking-normal">
             CJL
           </span>
-          <span className="text-2xl font-black text-accent animate-pulse">.</span>
+          <span className="text-2xl font-black text-accent" style={{ animation: "pulse-glow 2s infinite" }}>.</span>
         </a>
 
         {/* Desktop */}
-        <div className="hidden md:flex items-center gap-6">
+        <div className="hidden md:flex items-center gap-8">
           {navLinks.map((l) => (
             <a
               key={l.href}
               href={l.href}
-              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+              className="relative text-sm font-medium text-primary-foreground/70 hover:text-primary-foreground transition-colors duration-300 after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-accent after:transition-all after:duration-300 hover:after:w-full"
             >
               {l.label}
             </a>
           ))}
-          <Button size="sm" asChild>
+          <Button variant="hero" size="sm" className="glow-button" asChild>
             <a href="#contact">Get a Quote</a>
           </Button>
         </div>
 
         {/* Mobile toggle */}
-        <button className="md:hidden p-2" onClick={() => setOpen(!open)}>
+        <button className="md:hidden p-2 text-primary-foreground" onClick={() => setOpen(!open)}>
           {open ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
         </button>
       </div>
 
       {/* Mobile menu */}
-      {open && (
-        <div className="md:hidden bg-card border-b border-border px-6 pb-4 space-y-3">
-          {navLinks.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              onClick={() => setOpen(false)}
-              className="block text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-            >
-              {l.label}
-            </a>
-          ))}
-          <Button size="sm" className="w-full" asChild>
-            <a href="#contact" onClick={() => setOpen(false)}>Get a Quote</a>
-          </Button>
-        </div>
-      )}
-    </nav>
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3 }}
+            className="md:hidden bg-primary/95 backdrop-blur-xl border-b border-accent/10 px-6 pb-6 space-y-4 overflow-hidden"
+          >
+            {navLinks.map((l, i) => (
+              <motion.a
+                key={l.href}
+                href={l.href}
+                onClick={() => setOpen(false)}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: i * 0.05 }}
+                className="block text-sm font-medium text-primary-foreground/70 hover:text-primary-foreground transition-colors"
+              >
+                {l.label}
+              </motion.a>
+            ))}
+            <Button size="sm" variant="hero" className="w-full glow-button" asChild>
+              <a href="#contact" onClick={() => setOpen(false)}>Get a Quote</a>
+            </Button>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.nav>
   );
 };
 
