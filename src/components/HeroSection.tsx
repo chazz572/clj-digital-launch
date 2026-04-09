@@ -119,13 +119,22 @@ const HeroSection = () => (
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.8 }}
-          className="mt-16 flex items-center justify-center gap-8 text-primary-foreground/30 text-xs font-medium tracking-wider uppercase"
+          className="mt-16 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 text-primary-foreground/30 text-xs font-medium tracking-wider uppercase"
         >
-          <span>✦ Fast Delivery</span>
-          <span className="w-1 h-1 rounded-full bg-accent/40" />
-          <span>✦ Affordable</span>
-          <span className="w-1 h-1 rounded-full bg-accent/40" />
-          <span>✦ Modern Tech</span>
+          <div className="flex items-center gap-2">
+            <span className="text-accent text-sm">✦</span>
+            <span>Fast Delivery</span>
+          </div>
+          <span className="hidden sm:block w-1 h-1 rounded-full bg-accent/40" />
+          <div className="flex items-center gap-2">
+            <span className="text-accent text-sm">✦</span>
+            <span>Affordable</span>
+          </div>
+          <span className="hidden sm:block w-1 h-1 rounded-full bg-accent/40" />
+          <div className="flex items-center gap-2">
+            <span className="text-accent text-sm">✦</span>
+            <span>Modern Tech</span>
+          </div>
         </motion.div>
       </div>
     </div>
