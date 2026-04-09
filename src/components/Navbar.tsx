@@ -30,9 +30,10 @@ const Navbar = () => {
       transition={{ duration: 0.6, ease: "easeOut" }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-primary/80 dark:bg-primary/80 backdrop-blur-xl border-b border-accent/10 shadow-[0_4px_30px_-10px_hsl(190_90%_50%/0.15)]"
-          : "bg-primary/40 dark:bg-primary/40 backdrop-blur-md border-b border-transparent"
+          ? "backdrop-blur-xl border-b border-accent/10 shadow-[0_4px_30px_-10px_hsl(190_90%_50%/0.15)]"
+          : "backdrop-blur-md border-b border-transparent"
       }`}
+      style={{ backgroundColor: scrolled ? "hsla(215, 70%, 14%, 0.9)" : "hsla(215, 70%, 14%, 0.4)" }}
     >
       <div className={`container flex items-center justify-between transition-all duration-500 ${scrolled ? "h-14" : "h-18 py-5"}`}>
         <a href="#" className="group flex items-center gap-0.5">
@@ -48,7 +49,7 @@ const Navbar = () => {
             <a
               key={l.href}
               href={l.href}
-              className="relative text-sm font-medium text-primary-foreground/70 hover:text-primary-foreground transition-colors duration-300 after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-accent after:transition-all after:duration-300 hover:after:w-full"
+              className="relative text-sm font-medium text-white/70 hover:text-white transition-colors duration-300 after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-accent after:transition-all after:duration-300 hover:after:w-full"
             >
               {l.label}
             </a>
@@ -62,7 +63,7 @@ const Navbar = () => {
         {/* Mobile right side */}
         <div className="md:hidden flex items-center gap-2">
           <ThemeToggle />
-          <button className="p-2 text-primary-foreground" onClick={() => setOpen(!open)}>
+          <button className="p-2 text-white" onClick={() => setOpen(!open)}>
             {open ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
         </div>
@@ -76,7 +77,8 @@ const Navbar = () => {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden bg-primary/95 backdrop-blur-xl border-b border-accent/10 px-6 pb-6 space-y-4 overflow-hidden"
+            className="md:hidden backdrop-blur-xl border-b border-accent/10 px-6 pb-6 space-y-4 overflow-hidden"
+            style={{ backgroundColor: "hsla(215, 70%, 12%, 0.97)" }}
           >
             {navLinks.map((l, i) => (
               <motion.a
@@ -86,7 +88,7 @@ const Navbar = () => {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: i * 0.05 }}
-                className="block text-sm font-medium text-primary-foreground/70 hover:text-primary-foreground transition-colors"
+                className="block text-sm font-medium text-white/70 hover:text-white transition-colors"
               >
                 {l.label}
               </motion.a>
