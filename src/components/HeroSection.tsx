@@ -48,7 +48,7 @@ const HeroSection = () => (
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
         >
-          <span className="inline-block px-5 py-2 mb-8 text-xs font-semibold tracking-[0.2em] uppercase rounded-full bg-accent/10 text-accent border border-accent/20 backdrop-blur-sm">
+          <span className="inline-block px-5 py-2 mb-8 text-[10px] sm:text-xs font-semibold tracking-[0.2em] uppercase rounded-full bg-accent/10 text-accent border border-accent/20 backdrop-blur-sm text-center">
             ✦ Web & App Development Studio ✦
           </span>
         </motion.div>
