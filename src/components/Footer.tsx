@@ -1,18 +1,39 @@
+import { motion } from "framer-motion";
+
 const Footer = () => (
-  <footer className="py-12 bg-primary text-primary-foreground">
-    <div className="container">
-      <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+  <footer className="relative py-16 overflow-hidden" style={{ background: "linear-gradient(180deg, hsl(215 70% 10%) 0%, hsl(220 60% 8%) 100%)" }}>
+    {/* Subtle glow */}
+    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[400px] h-[2px] bg-gradient-to-r from-transparent via-accent/30 to-transparent" />
+    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[300px] h-[60px] bg-accent/5 blur-[40px]" />
+
+    <div className="container relative z-10">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="flex flex-col md:flex-row items-center justify-between gap-8"
+      >
         <div>
-          <span className="text-2xl font-black tracking-tighter bg-gradient-to-r from-accent via-primary-foreground to-accent bg-clip-text text-transparent">CJL</span><span className="text-2xl font-black text-accent animate-pulse">.</span>
-          <p className="text-sm text-primary-foreground/60 mt-1">Websites & apps built fast, built right.</p>
+          <a href="#" className="group inline-flex items-center gap-0.5">
+            <span className="text-3xl font-black tracking-tighter text-gradient">CJL</span>
+            <span className="text-3xl font-black text-accent" style={{ animation: "pulse-glow 2s infinite" }}>.</span>
+          </a>
+          <p className="text-sm text-primary-foreground/40 mt-2">Websites & apps built fast, built right.</p>
         </div>
-        <div className="flex gap-6 text-sm text-primary-foreground/60">
-          <a href="#services" className="hover:text-primary-foreground transition-colors">Services</a>
-          <a href="#pricing" className="hover:text-primary-foreground transition-colors">Pricing</a>
-          <a href="#contact" className="hover:text-primary-foreground transition-colors">Contact</a>
+        <div className="flex gap-8 text-sm">
+          {["Services", "Pricing", "Contact"].map((label) => (
+            <a
+              key={label}
+              href={`#${label.toLowerCase()}`}
+              className="text-primary-foreground/40 hover:text-primary-foreground transition-colors duration-300 relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1px] after:bg-accent/50 after:transition-all after:duration-300 hover:after:w-full"
+            >
+              {label}
+            </a>
+          ))}
         </div>
-      </div>
-      <div className="mt-8 pt-8 border-t border-primary-foreground/10 text-center text-xs text-primary-foreground/40">
+      </motion.div>
+      <div className="mt-12 pt-8 border-t border-primary-foreground/5 text-center text-xs text-primary-foreground/25">
         © {new Date().getFullYear()} CJL. All rights reserved.
       </div>
     </div>

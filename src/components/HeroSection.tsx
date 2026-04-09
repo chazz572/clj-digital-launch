@@ -1,46 +1,122 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Play } from "lucide-react";
+import { motion } from "framer-motion";
 
 const HeroSection = () => (
-  <section className="hero-bg relative overflow-hidden min-h-[90vh] flex items-center">
-    {/* Abstract shapes */}
+  <section className="hero-bg relative overflow-hidden min-h-[100vh] flex items-center">
+    {/* Animated background elements */}
     <div className="absolute inset-0 overflow-hidden">
-      <div className="absolute -top-40 -right-40 w-[500px] h-[500px] rounded-full bg-accent/5 blur-3xl" />
-      <div className="absolute bottom-0 -left-20 w-[400px] h-[400px] rounded-full bg-accent/8 blur-3xl" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full border border-accent/10" />
+      {/* Large gradient orbs */}
+      <div className="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full bg-accent/8 blur-[100px] float-slow" />
+      <div className="absolute bottom-[-100px] -left-20 w-[500px] h-[500px] rounded-full bg-accent/10 blur-[80px] float-medium" />
+      <div className="absolute top-1/4 right-1/4 w-[300px] h-[300px] rounded-full bg-accent/5 blur-[60px] float-fast" />
+
+      {/* Geometric shapes */}
+      <motion.div
+        animate={{ rotate: 360 }}
+        transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+        className="absolute top-[20%] right-[15%] w-[400px] h-[400px] rounded-full border border-accent/10"
+      />
+      <motion.div
+        animate={{ rotate: -360 }}
+        transition={{ duration: 45, repeat: Infinity, ease: "linear" }}
+        className="absolute top-[15%] right-[10%] w-[500px] h-[500px] rounded-full border border-accent/5"
+      />
+      <motion.div
+        animate={{ rotate: 360 }}
+        transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+        className="absolute bottom-[10%] left-[5%] w-[350px] h-[350px] rounded-full border border-accent/8"
+      />
+
+      {/* Grid pattern overlay */}
+      <div
+        className="absolute inset-0 opacity-[0.03]"
+        style={{
+          backgroundImage: `linear-gradient(hsl(190 90% 50%) 1px, transparent 1px), linear-gradient(90deg, hsl(190 90% 50%) 1px, transparent 1px)`,
+          backgroundSize: '60px 60px'
+        }}
+      />
+
+      {/* Spotlight effect */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-accent/5 rounded-full blur-[120px]" />
     </div>
 
     <div className="container relative z-10 py-32">
-      <div className="max-w-3xl mx-auto text-center">
-        <div className="animate-fade-up">
-        <span className="inline-block px-4 py-1.5 mb-6 text-xs font-semibold tracking-wider uppercase rounded-full bg-accent/15 text-accent">
+      <div className="max-w-4xl mx-auto text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+        >
+          <span className="inline-block px-5 py-2 mb-8 text-xs font-semibold tracking-[0.2em] uppercase rounded-full bg-accent/10 text-accent border border-accent/20 backdrop-blur-sm">
             ✦ Web & App Development Studio ✦
           </span>
-        </div>
+        </motion.div>
 
-        <h1 className="animate-fade-up text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-primary-foreground leading-[1.1] mb-6">
+        <motion.h1
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.15 }}
+          className="text-4xl sm:text-5xl lg:text-7xl font-extrabold tracking-tight text-primary-foreground leading-[1.05] mb-8"
+        >
           Websites & Apps Built{" "}
-          <span className="text-gradient">Fast, Built Right.</span>
-        </h1>
+          <span className="text-gradient relative">
+            Fast, Built Right.
+            <motion.span
+              className="absolute -bottom-2 left-0 w-full h-[3px] bg-gradient-to-r from-accent via-accent/60 to-transparent rounded-full"
+              initial={{ scaleX: 0 }}
+              animate={{ scaleX: 1 }}
+              transition={{ duration: 0.8, delay: 0.8 }}
+              style={{ transformOrigin: "left" }}
+            />
+          </span>
+        </motion.h1>
 
-        <p className="animate-fade-up-delay text-lg sm:text-xl text-primary-foreground/70 mb-10 max-w-2xl mx-auto leading-relaxed">
+        <motion.p
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.3 }}
+          className="text-lg sm:text-xl text-primary-foreground/60 mb-12 max-w-2xl mx-auto leading-relaxed"
+        >
           CJL helps businesses launch clean, modern digital experiences without the hassle. From simple sites to full-stack apps — we've got you covered.
-        </p>
+        </motion.p>
 
-        <div className="animate-fade-up-delay-2 flex flex-col sm:flex-row gap-4 justify-center">
-          <Button variant="hero" size="lg" asChild>
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.45 }}
+          className="flex flex-col sm:flex-row gap-4 justify-center"
+        >
+          <Button variant="hero" size="lg" className="glow-button text-base px-8 py-6 h-auto" asChild>
             <a href="#contact">
               Get a Free Quote <ArrowRight className="w-4 h-4 ml-1" />
             </a>
           </Button>
-          <Button variant="heroOutline" size="lg" asChild>
-            <a href="#portfolio">
+          <Button variant="heroOutline" size="lg" className="text-base px-8 py-6 h-auto backdrop-blur-sm" asChild>
+            <a href="#services">
               <Play className="w-4 h-4 mr-1" /> View Our Work
             </a>
           </Button>
-        </div>
+        </motion.div>
+
+        {/* Trust indicators */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 0.8 }}
+          className="mt-16 flex items-center justify-center gap-8 text-primary-foreground/30 text-xs font-medium tracking-wider uppercase"
+        >
+          <span>✦ Fast Delivery</span>
+          <span className="w-1 h-1 rounded-full bg-accent/40" />
+          <span>✦ Affordable</span>
+          <span className="w-1 h-1 rounded-full bg-accent/40" />
+          <span>✦ Modern Tech</span>
+        </motion.div>
       </div>
     </div>
+
+    {/* Bottom gradient fade */}
+    <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent" />
   </section>
 );
 
