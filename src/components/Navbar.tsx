@@ -49,7 +49,7 @@ const Navbar = () => {
             <a
               key={l.href}
               href={l.href}
-              className="relative text-sm font-medium text-primary-foreground/70 hover:text-primary-foreground transition-colors duration-300 after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-accent after:transition-all after:duration-300 hover:after:w-full"
+              className="relative text-sm font-medium text-white/70 hover:text-white transition-colors duration-300 after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-accent after:transition-all after:duration-300 hover:after:w-full"
             >
               {l.label}
             </a>
