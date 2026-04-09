@@ -1,5 +1,9 @@
 <!doctype html>
 <html lang="en">
+  <script>
+    // Prevent flash: apply saved theme immediately
+    (function(){var t=localStorage.getItem('cjl-theme');if(t==='light'){document.documentElement.classList.remove('dark')}else{document.documentElement.classList.add('dark')}})();
+  </script>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
