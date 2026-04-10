@@ -1,52 +1,54 @@
-import { CheckCircle2 } from "lucide-react";
 import { motion } from "framer-motion";
+import { Zap, Palette, Bot, Target, Smartphone, Search, DollarSign, HeadphonesIcon } from "lucide-react";
 
 const reasons = [
-  "Fast turnaround",
-  "AI‑powered tools included",
-  "Modern animated designs",
-  "Built for conversions",
-  "Mobile‑first",
-  "SEO‑ready",
-  "Affordable monthly plans",
+  { icon: Zap, title: "Fast Turnaround", desc: "Websites delivered in days, not weeks." },
+  { icon: Palette, title: "Modern Animated Designs", desc: "Premium visuals with smooth micro-interactions." },
+  { icon: Bot, title: "AI‑Powered Systems", desc: "Smart automation that works 24/7 for your business." },
+  { icon: Target, title: "Built for Conversions", desc: "Every element designed to capture leads and drive revenue." },
+  { icon: Smartphone, title: "Mobile‑First", desc: "Responsive design that looks flawless on every device." },
+  { icon: Search, title: "SEO‑Ready", desc: "Optimized structure and metadata from day one." },
+  { icon: DollarSign, title: "Transparent Pricing", desc: "No hidden fees. No surprises. Flat-rate pricing." },
+  { icon: HeadphonesIcon, title: "Ongoing Support", desc: "We don't disappear after launch — we're here long-term." },
 ];
 
 const WhySection = () => (
   <section id="why" className="py-32 relative overflow-hidden">
     <div className="absolute inset-0">
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent/3 rounded-full blur-[120px]" />
+      <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-accent/3 rounded-full blur-[120px]" />
     </div>
-
     <div className="container relative z-10">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.6 }}
-        className="max-w-3xl mx-auto text-center mb-16"
+        className="text-center mb-20"
       >
         <span className="inline-block px-4 py-1.5 text-xs font-semibold tracking-[0.2em] uppercase text-accent bg-accent/10 rounded-full border border-accent/20 mb-4">
-          Why Choose Us
+          Why CJL
         </span>
         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-foreground mt-4">
-          Built Different.{" "}
-          <span className="text-gradient">Built Better.</span>
+          Why Choose <span className="text-gradient">Us</span>
         </h2>
       </motion.div>
 
-      <div className="grid sm:grid-cols-2 gap-4 max-w-3xl mx-auto">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
         {reasons.map((r, i) => (
           <motion.div
-            key={r}
-            initial={{ opacity: 0, x: i % 2 === 0 ? -20 : 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            key={r.title}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.5, delay: i * 0.08 }}
-            whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
-            className="flex items-start gap-4 p-5 rounded-xl glass-card gradient-border transition-shadow duration-300 hover:shadow-[0_10px_40px_-10px_hsl(190_90%_50%/0.1)]"
+            transition={{ duration: 0.4, delay: i * 0.08 }}
+            whileHover={{ y: -6, transition: { duration: 0.3 } }}
+            className="group p-6 rounded-2xl glass-card gradient-border text-center transition-shadow duration-500 hover:shadow-[0_20px_60px_-15px_hsl(190_90%_50%/0.12)]"
           >
-            <CheckCircle2 className="w-5 h-5 text-accent shrink-0 mt-0.5" />
-            <span className="text-sm font-medium text-foreground">{r}</span>
+            <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mx-auto mb-4 border border-accent/20 group-hover:shadow-[0_0_20px_hsl(190_90%_50%/0.15)] transition-shadow duration-300">
+              <r.icon className="w-5 h-5 text-accent" />
+            </div>
+            <h3 className="text-sm font-bold text-foreground mb-2">{r.title}</h3>
+            <p className="text-xs text-muted-foreground leading-relaxed">{r.desc}</p>
           </motion.div>
         ))}
       </div>
