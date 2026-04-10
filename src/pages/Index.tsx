@@ -3,7 +3,7 @@ import HeroSection from "@/components/HeroSection";
 import TechStackStrip from "@/components/TechStackStrip";
 import ServicesSection from "@/components/ServicesSection";
 import PricingSection from "@/components/PricingSection";
-import PortfolioSection from "@/components/PortfolioSection";
+
 import WhySection from "@/components/WhySection";
 import ProcessSection from "@/components/ProcessSection";
 import FounderSection from "@/components/FounderSection";
@@ -20,7 +20,7 @@ const Index = () => (
     <TechStackStrip />
     <ServicesSection />
     <PricingSection />
-    <PortfolioSection />
+    
     <WhySection />
     <ProcessSection />
     <FounderSection />
