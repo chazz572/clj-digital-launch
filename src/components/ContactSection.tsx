@@ -2,8 +2,9 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Send, CalendarCheck } from "lucide-react";
+import { Send, ArrowRight } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { motion } from "framer-motion";
 
 const ContactSection = () => {
   const { toast } = useToast();
@@ -16,19 +17,37 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="py-24 bg-muted/50">
-      <div className="container max-w-2xl">
-        <div className="text-center mb-16">
-          <span className="text-sm font-semibold tracking-wider uppercase text-accent">Contact</span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-foreground mt-2">
-            Get In Touch
+    <section id="contact" className="py-32 relative overflow-hidden">
+      <div className="absolute inset-0">
+        <div className="absolute bottom-0 left-1/3 w-[500px] h-[500px] bg-accent/3 rounded-full blur-[100px]" />
+      </div>
+      <div className="container relative z-10 max-w-2xl">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
+          <span className="inline-block px-4 py-1.5 text-xs font-semibold tracking-[0.2em] uppercase text-accent bg-accent/10 rounded-full border border-accent/20 mb-4">
+            Contact
+          </span>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-foreground mt-4">
+            Ready to Get <span className="text-gradient">Started</span>?
           </h2>
-          <p className="text-muted-foreground mt-4">
-            Tell us about your project and we'll get back to you within 24 hours.
+          <p className="text-muted-foreground mt-6 text-lg">
+            Tell us what you need — we'll handle the rest.
           </p>
-        </div>
+        </motion.div>
 
-        <form onSubmit={handleSubmit} className="space-y-4 p-8 rounded-xl bg-card border border-border" style={{ boxShadow: "var(--card-shadow)" }}>
+        <motion.form
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          onSubmit={handleSubmit}
+          className="space-y-4 p-8 rounded-2xl glass-card"
+        >
           <div className="grid sm:grid-cols-2 gap-4">
             <Input
               placeholder="Your name"
@@ -36,6 +55,7 @@ const ContactSection = () => {
               onChange={(e) => setForm({ ...form, name: e.target.value })}
               required
               maxLength={100}
+              className="bg-background/50 border-border/50 focus:border-accent/50"
             />
             <Input
               type="email"
@@ -44,6 +64,7 @@ const ContactSection = () => {
               onChange={(e) => setForm({ ...form, email: e.target.value })}
               required
               maxLength={255}
+              className="bg-background/50 border-border/50 focus:border-accent/50"
             />
           </div>
           <Input
@@ -52,6 +73,7 @@ const ContactSection = () => {
             value={form.phone}
             onChange={(e) => setForm({ ...form, phone: e.target.value })}
             maxLength={20}
+            className="bg-background/50 border-border/50 focus:border-accent/50"
           />
           <Textarea
             placeholder="Tell us about your project..."
@@ -60,16 +82,12 @@ const ContactSection = () => {
             required
             maxLength={1000}
             rows={5}
+            className="bg-background/50 border-border/50 focus:border-accent/50"
           />
-          <div className="flex flex-col sm:flex-row gap-3">
-            <Button type="submit" className="flex-1">
-              <Send className="w-4 h-4 mr-2" /> Send Message
-            </Button>
-            <Button type="button" variant="outline" className="flex-1">
-              <CalendarCheck className="w-4 h-4 mr-2" /> Schedule a Call
-            </Button>
-          </div>
-        </form>
+          <Button type="submit" variant="hero" className="w-full glow-button h-12">
+            <Send className="w-4 h-4 mr-2" /> Send Message <ArrowRight className="w-4 h-4 ml-1" />
+          </Button>
+        </motion.form>
       </div>
     </section>
   );
