@@ -139,7 +139,7 @@ const PricingSection = () => (
       {/* Main pricing cards */}
       <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-24">
         <PricingCard plan={websiteBuild} />
-        <PricingCard plan={websiteMgmt} popular />
+        <PricingCard plan={websiteMgmt} />
       </div>
 
       {/* Custom Solutions */}
