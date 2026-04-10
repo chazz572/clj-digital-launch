@@ -3,14 +3,14 @@ import { Star } from "lucide-react";
 
 const testimonials = [
   {
-    name: "Sarah M.",
-    role: "Owner, Bright Clean Co.",
-    quote: "CJL built us a website that actually brings in leads. Within the first week we had three new bookings from the site alone. Couldn't be happier.",
+    name: "Arjun Patel",
+    role: "Owner, Curry Express Indian Bistro",
+    quote: "CJL built us a beautiful website with online ordering integration. Within the first month our takeout orders doubled. They understood our vision perfectly.",
   },
   {
-    name: "David R.",
-    role: "Founder, Summit HVAC",
-    quote: "Fast, professional, and the AI tools they set up have saved us hours every week. Our follow-up rate went from 30% to over 80%.",
+    name: "Jasmine Williams",
+    role: "Founder, Lush Lash Studio",
+    quote: "Our new site looks absolutely stunning and the booking system they set up has been a game-changer. We went from DM bookings to a fully automated schedule. Highly recommend.",
   },
 ];
 
