@@ -1,15 +1,15 @@
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
+import TechStackStrip from "@/components/TechStackStrip";
 import ServicesSection from "@/components/ServicesSection";
-import AIGrowthSection from "@/components/AIGrowthSection";
-import IndustriesSection from "@/components/IndustriesSection";
+import PricingSection from "@/components/PricingSection";
+import PortfolioSection from "@/components/PortfolioSection";
 import WhySection from "@/components/WhySection";
 import ProcessSection from "@/components/ProcessSection";
-
-import PricingSection from "@/components/PricingSection";
-
+import FounderSection from "@/components/FounderSection";
+import TestimonialsSection from "@/components/TestimonialsSection";
 import FAQSection from "@/components/FAQSection";
-
+import ContactSection from "@/components/ContactSection";
 import TeamSection from "@/components/TeamSection";
 import Footer from "@/components/Footer";
 
@@ -17,16 +17,16 @@ const Index = () => (
   <div className="min-h-screen">
     <Navbar />
     <HeroSection />
+    <TechStackStrip />
     <ServicesSection />
-    <AIGrowthSection />
-    <IndustriesSection />
+    <PricingSection />
+    <PortfolioSection />
     <WhySection />
     <ProcessSection />
-    
-    <PricingSection />
-    
+    <FounderSection />
+    <TestimonialsSection />
     <FAQSection />
-    
+    <ContactSection />
     <TeamSection />
     <Footer />
   </div>

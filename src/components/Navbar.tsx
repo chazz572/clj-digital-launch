@@ -6,9 +6,10 @@ import ThemeToggle from "./ThemeToggle";
 
 const navLinks = [
   { label: "Services", href: "#services" },
+  { label: "Pricing", href: "#pricing" },
+  { label: "Portfolio", href: "#portfolio" },
   { label: "Why CJL", href: "#why" },
   { label: "Process", href: "#process" },
-  { label: "Pricing", href: "#pricing" },
   { label: "FAQ", href: "#faq" },
   { label: "Contact", href: "#contact" },
 ];
@@ -43,7 +44,6 @@ const Navbar = () => {
           <span className="text-2xl font-black text-accent" style={{ animation: "pulse-glow 2s infinite" }}>.</span>
         </a>
 
-        {/* Desktop */}
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map((l) => (
             <a
@@ -60,7 +60,6 @@ const Navbar = () => {
           </Button>
         </div>
 
-        {/* Mobile right side */}
         <div className="md:hidden flex items-center gap-2">
           <ThemeToggle />
           <button className="p-2 text-white" onClick={() => setOpen(!open)}>
@@ -69,7 +68,6 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile menu */}
       <AnimatePresence>
         {open && (
           <motion.div
