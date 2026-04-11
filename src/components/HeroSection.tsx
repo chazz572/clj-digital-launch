@@ -12,17 +12,17 @@ const HeroSection = () => (
       <motion.div
         animate={{ rotate: 360 }}
         transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-        className="absolute top-[20%] right-[15%] w-[400px] h-[400px] rounded-full border border-accent/10"
+        className="absolute top-[20%] right-[15%] w-[400px] h-[400px] rounded-full border border-accent/10 dark:opacity-100 opacity-0"
       />
       <motion.div
         animate={{ rotate: -360 }}
         transition={{ duration: 45, repeat: Infinity, ease: "linear" }}
-        className="absolute top-[15%] right-[10%] w-[500px] h-[500px] rounded-full border border-accent/5"
+        className="absolute top-[15%] right-[10%] w-[500px] h-[500px] rounded-full border border-accent/5 dark:opacity-100 opacity-0"
       />
       <motion.div
         animate={{ rotate: 360 }}
         transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
-        className="absolute bottom-[10%] left-[5%] w-[350px] h-[350px] rounded-full border border-accent/8"
+        className="absolute bottom-[10%] left-[5%] w-[350px] h-[350px] rounded-full border border-accent/8 dark:opacity-100 opacity-0"
       />
 
       <div
