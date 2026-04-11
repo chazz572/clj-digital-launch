@@ -132,7 +132,7 @@ const PricingSection = () => (
           Pricing
         </span>
         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-foreground mt-4">
-          Simple, Transparent <span className="text-gradient">Pricing</span>
+          Website <span className="text-gradient">Pricing</span>
         </h2>
       </motion.div>
 
