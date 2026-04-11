@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 const faqs = [
@@ -16,28 +15,16 @@ const FAQSection = () => (
       <div className="absolute top-1/3 left-1/4 w-[400px] h-[400px] bg-accent/3 rounded-full blur-[100px]" />
     </div>
     <div className="container relative z-10 max-w-2xl">
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.6 }}
-        className="text-center mb-12"
-      >
+      <div className="text-center mb-12">
         <span className="inline-block px-4 py-1.5 text-xs font-semibold tracking-[0.2em] uppercase text-accent bg-accent/10 rounded-full border border-accent/20 mb-4">
           FAQ
         </span>
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-foreground mt-4">
           Frequently Asked <span className="text-gradient">Questions</span>
         </h2>
-      </motion.div>
+      </div>
 
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
-        className="rounded-2xl glass-card p-4 sm:p-6"
-      >
+      <div className="rounded-2xl border border-border/50 bg-card p-4 sm:p-6">
         <Accordion type="single" collapsible>
           {faqs.map((f, i) => (
             <AccordionItem key={i} value={`faq-${i}`} className="border-border/20 last:border-b-0">
@@ -50,7 +37,7 @@ const FAQSection = () => (
             </AccordionItem>
           ))}
         </Accordion>
-      </motion.div>
+      </div>
     </div>
   </section>
 );
