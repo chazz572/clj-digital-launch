@@ -30,7 +30,7 @@ const ProcessSection = () => (
       </motion.div>
 
       <div className="max-w-3xl mx-auto relative">
-        <div className="absolute left-8 top-0 bottom-0 w-px bg-gradient-to-b from-accent/30 via-accent/10 to-transparent hidden sm:block" />
+        
         <div className="space-y-12">
           {steps.map((s, i) => (
             <motion.div
