@@ -5,24 +5,24 @@ import { motion } from "framer-motion";
 const HeroSection = () => (
   <section className="hero-bg relative overflow-hidden min-h-[100vh] flex items-center">
     <div className="absolute inset-0 overflow-hidden">
-      <div className="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full bg-accent/8 blur-[100px] float-slow dark:opacity-100 opacity-0" />
-      <div className="absolute bottom-[-100px] -left-20 w-[500px] h-[500px] rounded-full bg-accent/10 blur-[80px] float-medium dark:opacity-100 opacity-0" />
-      <div className="absolute top-1/4 right-1/4 w-[300px] h-[300px] rounded-full bg-accent/5 blur-[60px] float-fast dark:opacity-100 opacity-0" />
+      <div className="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full bg-accent/8 blur-[100px] float-slow hidden dark:block" />
+      <div className="absolute bottom-[-100px] -left-20 w-[500px] h-[500px] rounded-full bg-accent/10 blur-[80px] float-medium hidden dark:block" />
+      <div className="absolute top-1/4 right-1/4 w-[300px] h-[300px] rounded-full bg-accent/5 blur-[60px] float-fast hidden dark:block" />
 
       <motion.div
         animate={{ rotate: 360 }}
         transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-        className="absolute top-[20%] right-[15%] w-[400px] h-[400px] rounded-full border border-accent/10 dark:opacity-100 opacity-0"
+        className="absolute top-[20%] right-[15%] w-[400px] h-[400px] rounded-full border border-accent/10 hidden dark:block"
       />
       <motion.div
         animate={{ rotate: -360 }}
         transition={{ duration: 45, repeat: Infinity, ease: "linear" }}
-        className="absolute top-[15%] right-[10%] w-[500px] h-[500px] rounded-full border border-accent/5 dark:opacity-100 opacity-0"
+        className="absolute top-[15%] right-[10%] w-[500px] h-[500px] rounded-full border border-accent/5 hidden dark:block"
       />
       <motion.div
         animate={{ rotate: 360 }}
         transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
-        className="absolute bottom-[10%] left-[5%] w-[350px] h-[350px] rounded-full border border-accent/8 dark:opacity-100 opacity-0"
+        className="absolute bottom-[10%] left-[5%] w-[350px] h-[350px] rounded-full border border-accent/8 hidden dark:block"
       />
 
       <div
@@ -32,7 +32,7 @@ const HeroSection = () => (
           backgroundSize: '60px 60px'
         }}
       />
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-accent/5 rounded-full blur-[120px] dark:opacity-100 opacity-0" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-accent/5 rounded-full blur-[120px] hidden dark:block" />
     </div>
 
     <div className="container relative z-10 py-32">
