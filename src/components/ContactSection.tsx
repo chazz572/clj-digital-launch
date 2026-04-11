@@ -2,18 +2,52 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Send, ArrowRight } from "lucide-react";
+import { Send, ArrowRight, Loader2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { motion } from "framer-motion";
+import { supabase } from "@/integrations/supabase/client";
 
 const ContactSection = () => {
   const { toast } = useToast();
   const [form, setForm] = useState({ name: "", email: "", phone: "", details: "" });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast({ title: "Message sent!", description: "We'll get back to you within 24 hours." });
-    setForm({ name: "", email: "", phone: "", details: "" });
+    setIsSubmitting(true);
+
+    try {
+      // 1. Store submission in database
+      const id = crypto.randomUUID();
+      const { error: dbError } = await supabase
+        .from("contact_submissions")
+        .insert({ id, name: form.name, email: form.email, phone: form.phone || null, details: form.details });
+
+      if (dbError) throw dbError;
+
+      // 2. Send email notification to chase.simpson@cjlwebsites.com
+      await supabase.functions.invoke("send-transactional-email", {
+        body: {
+          templateName: "contact-form-notification",
+          recipientEmail: form.email,
+          idempotencyKey: `contact-notify-${id}`,
+          templateData: {
+            name: form.name,
+            email: form.email,
+            phone: form.phone || "Not provided",
+            message: form.details,
+          },
+        },
+      });
+
+      toast({ title: "Message sent!", description: "We'll get back to you within 24 hours." });
+      setForm({ name: "", email: "", phone: "", details: "" });
+    } catch (error) {
+      console.error("Contact form error:", error);
+      toast({ title: "Something went wrong", description: "Please try again or email us directly.", variant: "destructive" });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -84,8 +118,12 @@ const ContactSection = () => {
             rows={5}
             className="bg-background/50 border-border/50 focus:border-accent/50"
           />
-          <Button type="submit" variant="hero" className="w-full glow-button h-12">
-            <Send className="w-4 h-4 mr-2" /> Send Message <ArrowRight className="w-4 h-4 ml-1" />
+          <Button type="submit" variant="hero" className="w-full glow-button h-12" disabled={isSubmitting}>
+            {isSubmitting ? (
+              <><Loader2 className="w-4 h-4 mr-2 animate-spin" /> Sending...</>
+            ) : (
+              <><Send className="w-4 h-4 mr-2" /> Send Message <ArrowRight className="w-4 h-4 ml-1" /></>
+            )}
           </Button>
         </motion.form>
       </div>
