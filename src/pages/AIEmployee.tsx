@@ -48,18 +48,18 @@ export default function AIEmployee() {
       <Navbar />
 
       {/* ── Hero ── */}
-      <section className="relative pt-32 pb-20 md:pt-44 md:pb-28 overflow-hidden">
+      <section className="relative pt-28 pb-16 md:pt-36 md:pb-24 overflow-hidden">
         {/* Decorative glow */}
         <div className="absolute inset-0 pointer-events-none hidden dark:block">
           <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[400px] rounded-full bg-accent/10 blur-[120px]" />
         </div>
 
-        <div className="container relative z-10 text-center max-w-4xl mx-auto px-6">
+        <div className="container relative z-10 text-center max-w-3xl mx-auto px-6">
           <motion.span
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="inline-block mb-6 px-4 py-1.5 rounded-full text-xs font-semibold tracking-widest uppercase border border-accent/30 text-accent bg-accent/5"
+            className="inline-block mb-5 px-4 py-1.5 rounded-full text-[11px] font-semibold tracking-[0.12em] uppercase border border-accent/30 text-accent bg-accent/5"
           >
             ✦ AI‑Powered Automation ✦
           </motion.span>
@@ -68,7 +68,7 @@ export default function AIEmployee() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-4xl sm:text-5xl md:text-6xl font-black leading-[1.1] tracking-tight mb-6"
+            className="text-4xl sm:text-5xl md:text-[3.5rem] font-extrabold leading-[1.08] tracking-[-0.02em] mb-5"
           >
             Meet Your{" "}
             <span className="text-gradient">AI Employee</span>
@@ -78,7 +78,7 @@ export default function AIEmployee() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10"
+            className="text-base md:text-lg text-muted-foreground max-w-xl mx-auto mb-8 leading-relaxed"
           >
             A fully automated digital worker that handles leads, tasks,
             follow‑ups, and pipeline management for your business.
