@@ -11,8 +11,8 @@ const inboxItems = [
 
 const statusIcon = (s: string) => {
   if (s === "ai-replied") return <Bot className="w-3.5 h-3.5 text-accent" />;
-  if (s === "follow-up") return <Clock className="w-3.5 h-3.5 text-amber-500" />;
-  if (s === "task-created") return <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500" />;
+  if (s === "follow-up") return <Clock className="w-3.5 h-3.5 text-accent" />;
+  if (s === "task-created") return <CheckCircle2 className="w-3.5 h-3.5 text-accent" />;
   return <AlertCircle className="w-3.5 h-3.5 text-muted-foreground" />;
 };
 
