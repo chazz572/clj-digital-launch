@@ -141,26 +141,41 @@ const AICopilotSection = () => (
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-80px" }}
         transition={{ duration: 0.5, delay: 0.25 }}
-        className="glass-card gradient-border rounded-2xl p-8 sm:p-10 text-center"
+        className="glass-card gradient-border rounded-2xl p-8 sm:p-12 text-center max-w-2xl mx-auto"
       >
-        <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-8">
-          Simple <span className="text-gradient">Pricing</span>
+        <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-2">
+          AI Copilot <span className="text-gradient">Pricing</span>
         </h3>
-        <div className="grid sm:grid-cols-2 gap-6 max-w-lg mx-auto mb-10">
-          <div className="p-6 rounded-xl bg-accent/5 border border-accent/15">
-            <p className="text-xs uppercase tracking-[0.15em] text-muted-foreground font-semibold mb-2">Setup</p>
-            <p className="text-2xl sm:text-3xl font-extrabold text-foreground">$300–$1,000</p>
-            <p className="text-xs text-muted-foreground mt-1">depending on document volume</p>
+        <p className="text-sm text-muted-foreground mb-8">Flexible plans based on your business needs</p>
+
+        <div className="grid sm:grid-cols-2 gap-5 mb-10">
+          <div className="p-6 rounded-2xl bg-accent/5 border border-accent/10">
+            <div className="w-10 h-10 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center mx-auto mb-4">
+              <DollarSign className="w-5 h-5 text-accent" />
+            </div>
+            <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground font-semibold mb-3">One‑Time Setup</p>
+            <p className="text-3xl sm:text-4xl font-extrabold text-foreground leading-none">
+              $300<span className="text-lg font-semibold text-muted-foreground">–</span>$1k
+            </p>
+            <p className="text-xs text-muted-foreground mt-2 leading-relaxed">Based on document volume<br />& complexity</p>
           </div>
-          <div className="p-6 rounded-xl bg-accent/5 border border-accent/15">
-            <p className="text-xs uppercase tracking-[0.15em] text-muted-foreground font-semibold mb-2">Monthly Hosting</p>
-            <p className="text-2xl sm:text-3xl font-extrabold text-foreground">$50–$200<span className="text-base font-semibold text-muted-foreground">/mo</span></p>
+          <div className="p-6 rounded-2xl bg-accent/5 border border-accent/10">
+            <div className="w-10 h-10 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center mx-auto mb-4">
+              <Repeat className="w-5 h-5 text-accent" />
+            </div>
+            <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground font-semibold mb-3">Monthly Hosting</p>
+            <p className="text-3xl sm:text-4xl font-extrabold text-foreground leading-none">
+              $50<span className="text-lg font-semibold text-muted-foreground">–</span>$200
+              <span className="text-base font-semibold text-muted-foreground">/mo</span>
+            </p>
+            <p className="text-xs text-muted-foreground mt-2 leading-relaxed">Includes hosting, updates<br />& ongoing training</p>
           </div>
         </div>
+
         <Button
           variant="hero"
           size="lg"
-          className="rounded-full px-8 text-base group"
+          className="rounded-full px-10 text-base group"
           onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
         >
           Get Your AI Copilot
