@@ -88,7 +88,7 @@ export function ServicePreviewModal({
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.92, y: 20 }}
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              className="fixed z-50 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-fit max-w-[90vw] max-h-[90vh] rounded-2xl border border-border bg-background shadow-[var(--premium-shadow)] overflow-hidden flex flex-col"
+              className="fixed z-50 inset-0 m-auto w-fit h-fit max-w-[90vw] max-h-[90vh] rounded-2xl border border-border bg-background shadow-[var(--premium-shadow)] overflow-hidden flex flex-col"
             >
               <div className="flex items-center justify-between px-5 py-3 border-b border-border shrink-0">
                 <span className="text-sm font-bold text-foreground">{title}</span>
