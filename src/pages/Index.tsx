@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import TechStackStrip from "@/components/TechStackStrip";
 import ServicesSection from "@/components/ServicesSection";
+import AICopilotSection from "@/components/AICopilotSection";
 import PricingSection from "@/components/PricingSection";
 
 import WhySection from "@/components/WhySection";
