@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Users, Mail, Brain, GitBranch, MessageSquare } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -91,7 +90,7 @@ export default function AIEmployee() {
             className="flex flex-col sm:flex-row items-center justify-center gap-4"
           >
             <Button variant="hero" size="lg" className="glow-button" asChild>
-              <Link to="/sample-dashboard">Open Dashboard Sample</Link>
+              <a href="#dashboard-preview">Open Dashboard Sample</a>
             </Button>
             <Button variant="outline" size="lg" asChild>
               <a href="/#contact">Get Started</a>
@@ -137,6 +136,40 @@ export default function AIEmployee() {
               </motion.div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ── Dashboard Preview ── */}
+      <section id="dashboard-preview" className="py-20 md:py-28">
+        <div className="container max-w-6xl mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-center mb-10"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              See It in Action
+            </h2>
+            <p className="text-muted-foreground max-w-xl mx-auto">
+              Explore a live sample of your AI Employee dashboard below.
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="rounded-2xl border border-border overflow-hidden shadow-2xl"
+          >
+            <iframe
+              src="https://ai-s-f9d89.web.app"
+              style={{ width: "100%", height: "80vh", border: "none" }}
+              title="AI Employee Dashboard Preview"
+            />
+          </motion.div>
         </div>
       </section>
 
