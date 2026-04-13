@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Globe, AppWindow, Smartphone, Bot, Workflow, CalendarCheck,
@@ -86,7 +86,7 @@ const ServiceCard = ({ s, i }: { s: typeof services[0]; i: number }) => {
 };
 
 const ServicesSection = () => (
-  <section id="services" className="py-32 relative overflow-hidden">
+  <section id="services" className="py-32 relative">
     <div className="absolute inset-0">
       <div className="absolute top-1/3 right-0 w-[500px] h-[500px] bg-accent/3 rounded-full blur-[120px]" />
     </div>

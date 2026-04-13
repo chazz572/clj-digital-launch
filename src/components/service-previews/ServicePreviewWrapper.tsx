@@ -1,4 +1,4 @@
-import { useState, lazy, Suspense, type ReactNode } from "react";
+import { useState, useEffect, lazy, Suspense, type ReactNode, type RefObject } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
@@ -109,17 +109,26 @@ export function ServicePreviewModal({
   );
 }
 
-export function ServicePreviewHover({ title }: { title: string }) {
+export function ServicePreviewHover({ title, cardRef }: { title: string; cardRef?: RefObject<HTMLDivElement> }) {
+  const [placeBelow, setPlaceBelow] = useState(false);
+
+  useEffect(() => {
+    if (cardRef?.current) {
+      const rect = cardRef.current.getBoundingClientRect();
+      setPlaceBelow(rect.top < 350);
+    }
+  }, [cardRef]);
+
   const renderPreview = previewMap[title];
   if (!renderPreview) return null;
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 8, scale: 0.95 }}
+      initial={{ opacity: 0, y: placeBelow ? -8 : 8, scale: 0.95 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
-      exit={{ opacity: 0, y: 8, scale: 0.95 }}
+      exit={{ opacity: 0, y: placeBelow ? -8 : 8, scale: 0.95 }}
       transition={{ duration: 0.25, ease: [0.25, 0.46, 0.45, 0.94] }}
-      className="absolute bottom-full left-1/2 -translate-x-1/2 mb-3 z-40 w-[280px] rounded-xl border border-border bg-background shadow-[var(--card-shadow-hover)] p-3 pointer-events-none"
+      className={`absolute ${placeBelow ? "top-full mt-3" : "bottom-full mb-3"} left-1/2 -translate-x-1/2 z-40 w-[280px] rounded-xl border border-border bg-background shadow-[var(--card-shadow-hover)] p-3 pointer-events-none`}
     >
       <Suspense fallback={<PreviewFallback />}>
         {renderPreview()}
