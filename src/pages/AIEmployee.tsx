@@ -12,7 +12,7 @@ import ComparisonTable from "@/components/ai-employee/ComparisonTable";
 import IndustryUseCases from "@/components/ai-employee/IndustryUseCases";
 import PricingCalculator from "@/components/ai-employee/PricingCalculator";
 import BehindTheScenes from "@/components/ai-employee/BehindTheScenes";
-import SuccessStories from "@/components/ai-employee/SuccessStories";
+
 import FinalCTA from "@/components/ai-employee/FinalCTA";
 
 export default function AIEmployee() {
@@ -88,8 +88,6 @@ export default function AIEmployee() {
       {/* 10 — Behind the Scenes */}
       <BehindTheScenes />
 
-      {/* 11 — Success Stories */}
-      <SuccessStories />
 
       {/* 12 — Final CTA */}
       <FinalCTA />
