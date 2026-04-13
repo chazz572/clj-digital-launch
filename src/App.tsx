@@ -7,7 +7,8 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 import Index from "./pages/Index.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import Unsubscribe from "./pages/Unsubscribe.tsx";
-import AIEmployeeDashboard from "./pages/AIEmployeeDashboard.tsx";
+import AIEmployee from "./pages/AIEmployee.tsx";
+import SampleDashboard from "./pages/SampleDashboard.tsx";
 
 const queryClient = new QueryClient();
 
@@ -21,7 +22,8 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/unsubscribe" element={<Unsubscribe />} />
-            <Route path="/ai-employee" element={<AIEmployeeDashboard />} />
+            <Route path="/ai-employee" element={<AIEmployee />} />
+            <Route path="/sample-dashboard" element={<SampleDashboard />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
