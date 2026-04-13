@@ -359,10 +359,6 @@ const styles: Record<string, any> = {
   topbarTitle: { fontSize: 18, fontWeight: 600 },
   topbarSubtitle: { fontSize: 12, color: "#6b7280" },
   topbarRight: { display: "flex", alignItems: "center", gap: 12 },
-  backBtn: {
-    padding: "8px 14px", background: v.accent, color: "white",
-    borderRadius: 999, textDecoration: "none", fontSize: 13,
-  },
   pill: (d: boolean) => ({
     padding: "6px 10px", borderRadius: 999,
     border: `1px solid ${v.border(d)}`, fontSize: 12, color: v.muted(d),
@@ -468,9 +464,4 @@ const styles: Record<string, any> = {
     padding: "6px 10px", borderRadius: 999,
     border: `1px solid ${v.border(d)}`, fontSize: 12, cursor: "pointer",
   }),
-  sidebarBackBtn: {
-    display: "block", padding: "10px 16px", background: "#4f46e5", color: "white",
-    borderRadius: 999, textDecoration: "none", fontSize: 14, textAlign: "center" as const,
-    marginTop: 12,
-  },
 };
