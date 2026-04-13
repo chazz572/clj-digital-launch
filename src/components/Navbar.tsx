@@ -46,12 +46,12 @@ const Navbar = () => {
       style={{ backgroundColor: scrolled ? "hsla(215, 70%, 14%, 0.85)" : "transparent" }}
     >
       <div className={`container flex items-center justify-between transition-all duration-500 ${scrolled ? "h-14" : "h-18 py-5"}`}>
-        <a href="/" className="group flex items-center gap-0.5">
+        <Link to="/" className="group flex items-center gap-0.5" aria-label="Go to homepage">
           <span className="text-2xl font-black tracking-tighter text-gradient drop-shadow-sm transition-all duration-300 group-hover:tracking-normal">
             CJL
           </span>
           <span className="text-2xl font-black text-accent" style={{ animation: "pulse-glow 2s infinite" }}>.</span>
-        </a>
+        </Link>
 
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map((l) =>
