@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Check, X } from "lucide-react";
 
 const rows = [
-  { label: "Monthly Cost", trad: "£2,500–£4,000+", ai: "From £500/mo" },
+  { label: "Monthly Cost", trad: "$2,500–$4,000+", ai: "From $500/mo" },
   { label: "Working Hours", trad: "9am–5pm", ai: "24/7/365" },
   { label: "Training Time", trad: "2–4 weeks", ai: "48 hours" },
   { label: "Consistency", trad: "Variable", ai: "100% consistent" },
