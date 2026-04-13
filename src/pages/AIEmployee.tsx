@@ -172,6 +172,7 @@ export default function AIEmployee() {
             />
           </motion.div>
         </div>
+      </section>
 
       {/* ── CTA ── */}
       <section className="py-20 md:py-28">
