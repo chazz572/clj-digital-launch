@@ -116,6 +116,7 @@ export default function AIEmployeeDashboard() {
             </div>
           ))}
 
+          <Link to="/" style={styles.sidebarBackBtn}>← Back</Link>
           <div style={styles.sidebarFooter}>v0.1 • Frontend shell ready for AI + backend wiring</div>
         </aside>
 
@@ -265,9 +266,6 @@ export default function AIEmployeeDashboard() {
             )}
           </div>
         </div>
-
-        {/* Floating back */}
-        <Link to="/" style={styles.floatingBack}>← Back</Link>
       </div>
     </div>
   );
