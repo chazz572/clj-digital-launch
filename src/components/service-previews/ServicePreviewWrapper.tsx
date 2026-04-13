@@ -96,7 +96,7 @@ export function ServicePreviewModal({
                   <X className="w-4 h-4 text-muted-foreground" />
                 </button>
               </div>
-              <div className="p-5 max-h-[65vh] overflow-y-auto">
+              <div className="p-5 max-h-[80vh] overflow-y-auto">
                 <Suspense fallback={<PreviewFallback />}>
                   {renderPreview()}
                 </Suspense>
