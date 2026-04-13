@@ -9,7 +9,7 @@ const screens = [
     icon: Home,
     content: (
       <div className="space-y-4 p-4">
-        <div className="text-sm font-bold text-foreground">Good morning ☀️</div>
+        <div className="text-base sm:text-sm font-bold text-foreground">Good morning ☀️</div>
         <div className="rounded-xl bg-accent/10 p-3 border border-accent/20">
           <div className="text-xs font-semibold text-foreground mb-1">Featured</div>
           <div className="h-20 rounded-lg bg-gradient-to-br from-accent/20 to-accent/5 flex items-center justify-center">
