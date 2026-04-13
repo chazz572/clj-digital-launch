@@ -91,7 +91,7 @@ export default function AIEmployee() {
             className="flex flex-col sm:flex-row items-center justify-center gap-4"
           >
             <Button variant="hero" size="lg" className="glow-button" asChild>
-              <Link to="/sample-dashboard">Open Dashboard Sample</Link>
+              <a href="#dashboard-preview">Open Dashboard Sample</a>
             </Button>
             <Button variant="outline" size="lg" asChild>
               <a href="/#contact">Get Started</a>
