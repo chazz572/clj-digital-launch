@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { CheckCircle2, ArrowRight, ArrowLeft, Sparkles } from "lucide-react";
+import { CheckCircle2, ArrowRight, ArrowLeft, Sparkles, Loader2 } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/hooks/use-toast";
 
 const industries = ["Real Estate", "Contractors & Trades", "Restaurants & Hospitality", "Gyms & Fitness", "Agencies & Consultants", "E‑commerce", "Healthcare", "Legal", "Other"];
 
@@ -27,14 +29,55 @@ export default function WizardSection() {
   const [selectedTasks, setSelectedTasks] = useState<string[]>([]);
   const [selectedTools, setSelectedTools] = useState<string[]>([]);
   const [complete, setComplete] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const { toast } = useToast();
 
   const toggleItem = (item: string, list: string[], setter: (v: string[]) => void) => {
     setter(list.includes(item) ? list.filter((t) => t !== item) : [...list, item]);
   };
 
-  const next = () => {
-    if (step < 2) setStep(step + 1);
-    else setComplete(true);
+  const next = async () => {
+    if (step < 2) {
+      setStep(step + 1);
+      return;
+    }
+
+    // Final step — save and send email
+    setSubmitting(true);
+    try {
+      const id = crypto.randomUUID();
+      await (supabase as any).from('wizard_submissions').insert({
+        id,
+        industry,
+        tasks: selectedTasks,
+        tools: selectedTools,
+      });
+
+      await supabase.functions.invoke('send-transactional-email', {
+        body: {
+          templateName: 'wizard-config-notification',
+          recipientEmail: 'chase.simpson@cjlwebsites.com',
+          idempotencyKey: `wizard-config-${id}`,
+          templateData: {
+            industry,
+            tasks: selectedTasks,
+            tools: selectedTools,
+          },
+        },
+      });
+
+      setComplete(true);
+    } catch (err) {
+      console.error('Wizard submission error:', err);
+      toast({
+        title: "Something went wrong",
+        description: "Your configuration was saved but we couldn't send the notification. We'll follow up soon!",
+        variant: "destructive",
+      });
+      setComplete(true);
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -68,7 +111,7 @@ export default function WizardSection() {
                 <Sparkles className="w-10 h-10 text-accent mx-auto mb-4" />
                 <h3 className="text-xl font-bold mb-2">Your AI Employee is Configured!</h3>
                 <p className="text-sm text-muted-foreground mb-6 max-w-md mx-auto">
-                  Based on your selections, we recommend <strong>{selectedTasks.length} automations</strong> across <strong>{selectedTools.length} tools</strong> for the <strong>{industry || "your"}</strong> industry.
+                  Based on your selections, we recommend <strong>{selectedTasks.length} automations</strong> across <strong>{selectedTools.length} tools</strong> for the <strong>{industry || "your"}</strong> industry. We'll be in touch soon!
                 </p>
                 <div className="grid sm:grid-cols-3 gap-4 mb-8 text-left max-w-lg mx-auto">
                   <div className="rounded-xl bg-accent/5 border border-accent/20 p-4">
@@ -86,7 +129,7 @@ export default function WizardSection() {
                 </div>
                 <div className="flex flex-col sm:flex-row gap-3 justify-center">
                   <Button variant="hero" className="glow-button" asChild><a href="/#contact">Book a Demo Call</a></Button>
-                  <Button variant="outline" onClick={() => { setComplete(false); setStep(0); }}>Start Over</Button>
+                  <Button variant="outline" onClick={() => { setComplete(false); setStep(0); setIndustry(""); setSelectedTasks([]); setSelectedTools([]); }}>Start Over</Button>
                 </div>
               </motion.div>
             ) : step === 0 ? (
@@ -132,8 +175,14 @@ export default function WizardSection() {
               <Button variant="ghost" size="sm" onClick={() => setStep(Math.max(0, step - 1))} disabled={step === 0}>
                 <ArrowLeft className="w-4 h-4 mr-1" /> Back
               </Button>
-              <Button variant="hero" size="sm" onClick={next}>
-                {step === 2 ? "Generate Config" : "Next"} <ArrowRight className="w-4 h-4 ml-1" />
+              <Button variant="hero" size="sm" onClick={next} disabled={submitting}>
+                {submitting ? (
+                  <><Loader2 className="w-4 h-4 mr-1 animate-spin" /> Submitting...</>
+                ) : step === 2 ? (
+                  <>Generate Config <ArrowRight className="w-4 h-4 ml-1" /></>
+                ) : (
+                  <>Next <ArrowRight className="w-4 h-4 ml-1" /></>
+                )}
               </Button>
             </div>
           )}

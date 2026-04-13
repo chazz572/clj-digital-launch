@@ -152,6 +152,30 @@ export type Database = {
         }
         Relationships: []
       }
+      wizard_submissions: {
+        Row: {
+          created_at: string
+          id: string
+          industry: string
+          tasks: string[]
+          tools: string[]
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          industry: string
+          tasks?: string[]
+          tools?: string[]
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          industry?: string
+          tasks?: string[]
+          tools?: string[]
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
