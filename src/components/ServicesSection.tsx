@@ -1,12 +1,12 @@
-import { useState, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
+import { motion } from "framer-motion";
 import {
   Globe, AppWindow, Smartphone, Bot, Workflow, CalendarCheck,
   Target, LayoutDashboard, Calculator, MailCheck, Package,
   Users, CreditCard, UserCircle, Eye,
 } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
-import { hasPreview, ServicePreviewModal, ServicePreviewHover } from "./service-previews/ServicePreviewWrapper";
+import { hasPreview, ServicePreviewModal } from "./service-previews/ServicePreviewWrapper";
 
 const services = [
   { icon: Globe, title: "Website Design & Development", desc: "Custom, conversion-focused websites built with modern frameworks and premium design." },
@@ -26,16 +26,13 @@ const services = [
 ];
 
 const ServiceCard = ({ s, i }: { s: typeof services[0]; i: number }) => {
-  const [hovered, setHovered] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
   const isMobile = useIsMobile();
   const interactive = hasPreview(s.title);
-  const cardRef = useRef<HTMLDivElement>(null);
 
   return (
     <>
       <motion.div
-        ref={cardRef}
         key={s.title}
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -45,16 +42,8 @@ const ServiceCard = ({ s, i }: { s: typeof services[0]; i: number }) => {
         className={`group relative p-6 rounded-2xl glass-card gradient-border transition-shadow duration-500 ${
           interactive ? "cursor-pointer" : ""
         } hover:shadow-[var(--card-shadow-hover)]`}
-        onMouseEnter={() => !isMobile && setHovered(true)}
-        onMouseLeave={() => setHovered(false)}
         onClick={() => interactive && setModalOpen(true)}
       >
-        {/* Hover preview (desktop only) */}
-        {!isMobile && (
-          <AnimatePresence>
-            {hovered && interactive && <ServicePreviewHover title={s.title} cardRef={cardRef} />}
-          </AnimatePresence>
-        )}
 
         <div className="flex items-start justify-between mb-4">
           <div className="w-11 h-11 rounded-xl bg-accent/10 flex items-center justify-center border border-accent/20 group-hover:shadow-[0_0_20px_hsl(199_89%_48%/0.15)] transition-shadow duration-300">
