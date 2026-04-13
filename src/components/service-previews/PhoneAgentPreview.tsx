@@ -1,94 +1,177 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Phone, Play, Pause, Volume2, VolumeX } from "lucide-react";
+import { Phone, Play, Pause, Volume2, VolumeX, Loader2 } from "lucide-react";
+
+// Sarah = AI voice (female), Daniel = Caller voice (male)
+const VOICE_AI = "EXAVITQu4vr4xnSDxMaL"; // Sarah
+const VOICE_CALLER = "onwK4e9ZLuTAKqWW03F9"; // Daniel
 
 const subtitles = [
-  { time: 0, speaker: "AI", text: "Hi, thanks for calling! How can I help you today?" },
-  { time: 4, speaker: "Caller", text: "I'd like to schedule a service appointment." },
-  { time: 7.5, speaker: "AI", text: "I'd be happy to help. What day works best for you?" },
-  { time: 11, speaker: "Caller", text: "How about Thursday morning?" },
-  { time: 14, speaker: "AI", text: "Thursday at 9 AM is available. I'll book that for you and send a confirmation." },
-  { time: 19, speaker: "Caller", text: "Perfect, thank you!" },
+  { speaker: "AI", text: "Hi, thanks for calling! How can I help you today?", voiceId: VOICE_AI },
+  { speaker: "Caller", text: "I'd like to schedule a service appointment.", voiceId: VOICE_CALLER },
+  { speaker: "AI", text: "I'd be happy to help. What day works best for you?", voiceId: VOICE_AI },
+  { speaker: "Caller", text: "How about Thursday morning?", voiceId: VOICE_CALLER },
+  { speaker: "AI", text: "Thursday at 9 AM is available. I'll book that for you and send a confirmation.", voiceId: VOICE_AI },
+  { speaker: "Caller", text: "Perfect, thank you!", voiceId: VOICE_CALLER },
 ];
-
-const TOTAL_DURATION = 22;
 
 const PhoneAgentPreview = ({ compact = false }: { compact?: boolean }) => {
   const [playing, setPlaying] = useState(false);
-  const [elapsed, setElapsed] = useState(0);
+  const [loading, setLoading] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(-1);
   const [muted, setMuted] = useState(false);
-  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
-  const spokenRef = useRef<Set<number>>(new Set());
-  const synthRef = useRef(typeof window !== "undefined" ? window.speechSynthesis : null);
+  const [progress, setProgress] = useState(0);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const audioCacheRef = useRef<Map<number, string>>(new Map());
+  const stoppedRef = useRef(false);
 
-  const speak = useCallback((text: string, speaker: string) => {
-    if (!synthRef.current || muted) return;
-    const utterance = new SpeechSynthesisUtterance(text);
-    utterance.rate = 1.05;
-    utterance.pitch = speaker === "AI" ? 1.1 : 0.9;
-    utterance.volume = 0.8;
-    // Try to pick different voices for AI vs Caller
-    const voices = synthRef.current.getVoices();
-    if (voices.length > 1) {
-      const femaleVoice = voices.find(v => /female|samantha|zira|karen|victoria/i.test(v.name));
-      const maleVoice = voices.find(v => /male|daniel|david|james|alex/i.test(v.name) && !/female/i.test(v.name));
-      utterance.voice = speaker === "AI" ? (femaleVoice || voices[0]) : (maleVoice || voices[1] || voices[0]);
+  const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
+  const SUPABASE_KEY = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY;
+
+  const fetchAudio = useCallback(async (index: number): Promise<string | null> => {
+    // Return cached URL if available
+    if (audioCacheRef.current.has(index)) {
+      return audioCacheRef.current.get(index)!;
     }
-    synthRef.current.speak(utterance);
-  }, [muted]);
 
-  useEffect(() => {
-    // Preload voices
-    synthRef.current?.getVoices();
+    const sub = subtitles[index];
+    try {
+      const response = await fetch(
+        `${SUPABASE_URL}/functions/v1/elevenlabs-tts`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            apikey: SUPABASE_KEY,
+            Authorization: `Bearer ${SUPABASE_KEY}`,
+          },
+          body: JSON.stringify({ text: sub.text, voiceId: sub.voiceId }),
+        }
+      );
+
+      if (!response.ok) {
+        console.error("TTS fetch failed:", response.status);
+        return null;
+      }
+
+      const blob = await response.blob();
+      const url = URL.createObjectURL(blob);
+      audioCacheRef.current.set(index, url);
+      return url;
+    } catch (err) {
+      console.error("TTS error:", err);
+      return null;
+    }
+  }, [SUPABASE_URL, SUPABASE_KEY]);
+
+  const playLine = useCallback(async (index: number) => {
+    if (stoppedRef.current || index >= subtitles.length) {
+      setPlaying(false);
+      setCurrentIndex(-1);
+      setProgress(100);
+      return;
+    }
+
+    setCurrentIndex(index);
+    setProgress((index / subtitles.length) * 100);
+
+    // Pre-fetch next line while playing current
+    if (index + 1 < subtitles.length) {
+      fetchAudio(index + 1);
+    }
+
+    if (muted) {
+      // If muted, just show subtitles with timing
+      await new Promise(r => setTimeout(r, 2000));
+      if (!stoppedRef.current) playLine(index + 1);
+      return;
+    }
+
+    const audioUrl = await fetchAudio(index);
+    if (!audioUrl || stoppedRef.current) {
+      // Fallback: advance after delay if audio fails
+      await new Promise(r => setTimeout(r, 2000));
+      if (!stoppedRef.current) playLine(index + 1);
+      return;
+    }
+
+    const audio = new Audio(audioUrl);
+    audioRef.current = audio;
+
+    audio.onended = () => {
+      if (!stoppedRef.current) {
+        // Small pause between lines
+        setTimeout(() => playLine(index + 1), 400);
+      }
+    };
+
+    audio.onerror = () => {
+      if (!stoppedRef.current) {
+        setTimeout(() => playLine(index + 1), 1000);
+      }
+    };
+
+    try {
+      await audio.play();
+    } catch {
+      if (!stoppedRef.current) {
+        setTimeout(() => playLine(index + 1), 1000);
+      }
+    }
+  }, [muted, fetchAudio]);
+
+  const startPlayback = useCallback(async () => {
+    setLoading(true);
+    stoppedRef.current = false;
+    setProgress(0);
+
+    // Pre-fetch first two lines
+    await fetchAudio(0);
+    fetchAudio(1);
+
+    setLoading(false);
+    setPlaying(true);
+    playLine(0);
+  }, [fetchAudio, playLine]);
+
+  const stopPlayback = useCallback(() => {
+    stoppedRef.current = true;
+    if (audioRef.current) {
+      audioRef.current.pause();
+      audioRef.current = null;
+    }
+    setPlaying(false);
+    setCurrentIndex(-1);
+    setProgress(0);
   }, []);
 
-  useEffect(() => {
-    if (playing) {
-      intervalRef.current = setInterval(() => {
-        setElapsed((p) => {
-          if (p >= TOTAL_DURATION) {
-            setPlaying(false);
-            spokenRef.current.clear();
-            return 0;
-          }
-          return p + 0.25;
-        });
-      }, 250);
-    }
-    return () => {
-      if (intervalRef.current) clearInterval(intervalRef.current);
-    };
-  }, [playing]);
-
-  // Trigger speech when a new subtitle becomes active
-  useEffect(() => {
-    if (!playing) return;
-    const currentSub = [...subtitles].reverse().find((s) => elapsed >= s.time);
-    if (currentSub && !spokenRef.current.has(currentSub.time)) {
-      spokenRef.current.add(currentSub.time);
-      speak(currentSub.text, currentSub.speaker);
-    }
-  }, [elapsed, playing, speak]);
-
-  const currentSub = [...subtitles].reverse().find((s) => elapsed >= s.time);
-
   const togglePlay = () => {
-    if (elapsed >= TOTAL_DURATION) {
-      setElapsed(0);
-      spokenRef.current.clear();
-    }
     if (playing) {
-      synthRef.current?.cancel();
+      stopPlayback();
+    } else {
+      startPlayback();
     }
-    setPlaying((p) => !p);
   };
 
   const toggleMute = () => {
-    if (!muted) {
-      synthRef.current?.cancel();
+    setMuted(m => !m);
+    if (audioRef.current) {
+      audioRef.current.muted = !muted;
     }
-    setMuted((m) => !m);
   };
+
+  // Cleanup on unmount
+  useEffect(() => {
+    return () => {
+      stoppedRef.current = true;
+      if (audioRef.current) {
+        audioRef.current.pause();
+      }
+      audioCacheRef.current.forEach(url => URL.revokeObjectURL(url));
+    };
+  }, []);
+
+  const currentSub = currentIndex >= 0 ? subtitles[currentIndex] : null;
 
   return (
     <div className={`flex flex-col items-center ${compact ? "scale-90" : ""}`}>
@@ -100,7 +183,7 @@ const PhoneAgentPreview = ({ compact = false }: { compact?: boolean }) => {
           </div>
           <div className="text-xs font-semibold text-foreground">AI Receptionist</div>
           <div className="text-[9px] text-muted-foreground mt-0.5">
-            {playing ? "Call in progress..." : "Sample call demo"}
+            {loading ? "Connecting..." : playing ? "Call in progress..." : "Sample call demo"}
           </div>
         </div>
 
@@ -113,13 +196,13 @@ const PhoneAgentPreview = ({ compact = false }: { compact?: boolean }) => {
                 key={i}
                 className="w-1 rounded-full bg-accent/40"
                 animate={{
-                  height: playing
+                  height: playing && !loading
                     ? [4, 8 + Math.random() * 16, 4]
                     : 4,
                 }}
                 transition={{
                   duration: 0.4 + Math.random() * 0.3,
-                  repeat: playing ? Infinity : 0,
+                  repeat: playing && !loading ? Infinity : 0,
                   delay: i * 0.05,
                 }}
               />
@@ -129,9 +212,9 @@ const PhoneAgentPreview = ({ compact = false }: { compact?: boolean }) => {
           {/* Subtitle */}
           <div className="h-12 flex items-center justify-center">
             <AnimatePresence mode="wait">
-              {currentSub && playing && (
+              {currentSub && (
                 <motion.div
-                  key={currentSub.time}
+                  key={currentIndex}
                   initial={{ opacity: 0, y: 6 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -6 }}
@@ -149,8 +232,8 @@ const PhoneAgentPreview = ({ compact = false }: { compact?: boolean }) => {
           <div className="w-full h-1 bg-muted rounded-full overflow-hidden">
             <motion.div
               className="h-full bg-accent rounded-full"
-              animate={{ width: `${(elapsed / TOTAL_DURATION) * 100}%` }}
-              transition={{ duration: 0.3 }}
+              animate={{ width: `${progress}%` }}
+              transition={{ duration: 0.5 }}
             />
           </div>
         </div>
@@ -165,9 +248,16 @@ const PhoneAgentPreview = ({ compact = false }: { compact?: boolean }) => {
           </button>
           <button
             onClick={togglePlay}
-            className="w-10 h-10 rounded-full bg-accent/10 border border-accent/20 flex items-center justify-center text-accent hover:bg-accent/20 transition-colors"
+            disabled={loading}
+            className="w-10 h-10 rounded-full bg-accent/10 border border-accent/20 flex items-center justify-center text-accent hover:bg-accent/20 transition-colors disabled:opacity-50"
           >
-            {playing ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4 ml-0.5" />}
+            {loading ? (
+              <Loader2 className="w-4 h-4 animate-spin" />
+            ) : playing ? (
+              <Pause className="w-4 h-4" />
+            ) : (
+              <Play className="w-4 h-4 ml-0.5" />
+            )}
           </button>
         </div>
       </div>
