@@ -94,12 +94,12 @@ const MobileAppPreview = ({ compact = false }: { compact?: boolean }) => {
   return (
     <div className={`flex flex-col items-center ${compact ? "scale-90" : ""}`}>
       {/* Phone frame */}
-      <div className="relative w-[200px] h-[400px] rounded-[28px] border-2 border-border bg-background overflow-hidden shadow-[var(--card-shadow)]">
+      <div className="relative w-[240px] sm:w-[200px] h-[480px] sm:h-[400px] rounded-[28px] border-2 border-accent/30 bg-background overflow-hidden shadow-[0_0_30px_hsl(199_89%_48%/0.1)]">
         {/* Notch */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-20 h-5 bg-foreground/10 rounded-b-xl z-10" />
 
         {/* Screen content */}
-        <div className="h-[calc(100%-48px)] mt-6 overflow-y-auto scrollbar-none">
+        <div className="h-[calc(100%-56px)] sm:h-[calc(100%-48px)] mt-6 overflow-y-auto scrollbar-none">
           <AnimatePresence mode="wait">
             <motion.div
               key={activeScreen}
@@ -114,17 +114,17 @@ const MobileAppPreview = ({ compact = false }: { compact?: boolean }) => {
         </div>
 
         {/* Tab bar */}
-        <div className="absolute bottom-0 left-0 right-0 h-12 bg-background/90 backdrop-blur-sm border-t border-border flex items-center justify-around px-2">
+        <div className="absolute bottom-0 left-0 right-0 h-14 sm:h-12 bg-background/90 backdrop-blur-sm border-t border-border flex items-center justify-around px-2">
           {screens.map((screen, i) => (
             <button
               key={screen.id}
               onClick={() => setActiveScreen(i)}
-              className={`flex flex-col items-center gap-0.5 px-3 py-1 rounded-lg transition-colors ${
+              className={`flex flex-col items-center gap-1 sm:gap-0.5 px-4 sm:px-3 py-1.5 sm:py-1 rounded-lg transition-colors ${
                 activeScreen === i ? "text-accent" : "text-muted-foreground"
               }`}
             >
-              <screen.icon className="w-4 h-4" />
-              <span className="text-[8px] font-medium">{screen.label}</span>
+              <screen.icon className="w-5 h-5 sm:w-4 sm:h-4" />
+              <span className="text-[10px] sm:text-[8px] font-medium">{screen.label}</span>
             </button>
           ))}
         </div>
