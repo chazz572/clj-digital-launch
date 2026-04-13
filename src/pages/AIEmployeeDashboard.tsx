@@ -469,10 +469,9 @@ const styles: Record<string, any> = {
     padding: "6px 10px", borderRadius: 999,
     border: `1px solid ${v.border(d)}`, fontSize: 12, cursor: "pointer",
   }),
-  floatingBack: {
-    position: "fixed" as const, bottom: 20, left: 20, zIndex: 9999,
-    padding: "10px 16px", background: "#4f46e5", color: "white",
-    borderRadius: 999, textDecoration: "none", fontSize: 14,
-    boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
+  sidebarBackBtn: {
+    display: "block", padding: "10px 16px", background: "#4f46e5", color: "white",
+    borderRadius: 999, textDecoration: "none", fontSize: 14, textAlign: "center" as const,
+    marginTop: 12,
   },
 };
