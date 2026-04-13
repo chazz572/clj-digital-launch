@@ -48,7 +48,7 @@ export default function PricingCalculator() {
           <div className="grid sm:grid-cols-3 gap-4 mb-6">
             <div className="rounded-xl bg-accent/5 border border-accent/20 p-4 text-center">
               <Calculator className="w-5 h-5 text-accent mx-auto mb-1" />
-              <div className="text-2xl font-bold text-foreground">£{cost}</div>
+              <div className="text-2xl font-bold text-foreground">${cost}</div>
               <div className="text-xs text-muted-foreground">Est. monthly cost</div>
             </div>
             <div className="rounded-xl bg-accent/5 border border-accent/20 p-4 text-center">

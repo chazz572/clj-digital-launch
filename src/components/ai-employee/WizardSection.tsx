@@ -76,7 +76,7 @@ export default function WizardSection() {
                     <div className="text-xs text-muted-foreground">Availability</div>
                   </div>
                   <div className="rounded-xl bg-accent/5 border border-accent/20 p-4">
-                    <div className="text-2xl font-bold text-accent">~£500</div>
+                    <div className="text-2xl font-bold text-accent">~$500</div>
                     <div className="text-xs text-muted-foreground">Est. monthly</div>
                   </div>
                   <div className="rounded-xl bg-accent/5 border border-accent/20 p-4">

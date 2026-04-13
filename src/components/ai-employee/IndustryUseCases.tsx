@@ -7,7 +7,7 @@ const industries = [
     icon: Building2, name: "Real Estate",
     tasks: ["Respond to property inquiries instantly", "Schedule viewings automatically", "Send listing updates to buyers"],
     automation: "Auto-qualify leads based on budget, location, and timeline",
-    conversation: { lead: "I'm looking for a 3-bed house in Manchester under £350k.", ai: "Great choice! I've found 7 matching properties. I've scheduled viewings for the top 3 this Saturday. Check your email for details!" },
+    conversation: { lead: "I'm looking for a 3-bed house in Austin under $350k.", ai: "Great choice! I've found 7 matching properties. I've scheduled viewings for the top 3 this Saturday. Check your email for details!" },
   },
   {
     icon: Wrench, name: "Contractors",
