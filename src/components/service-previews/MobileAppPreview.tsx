@@ -94,7 +94,7 @@ const MobileAppPreview = ({ compact = false }: { compact?: boolean }) => {
   return (
     <div className={`flex flex-col items-center ${compact ? "scale-90" : ""}`}>
       {/* Phone frame */}
-      <div className="relative w-[200px] h-[380px] rounded-[28px] border-2 border-accent/30 bg-background overflow-hidden shadow-[0_0_30px_hsl(199_89%_48%/0.1)]">
+      <div className="relative w-[180px] h-[320px] rounded-[24px] border-2 border-accent/30 bg-background overflow-hidden shadow-[0_0_30px_hsl(199_89%_48%/0.1)]">
         {/* Notch */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-20 h-5 bg-foreground/10 rounded-b-xl z-10" />
 
