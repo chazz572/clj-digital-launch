@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Globe, AppWindow, Smartphone, Bot, Workflow, CalendarCheck,
@@ -30,10 +30,12 @@ const ServiceCard = ({ s, i }: { s: typeof services[0]; i: number }) => {
   const [modalOpen, setModalOpen] = useState(false);
   const isMobile = useIsMobile();
   const interactive = hasPreview(s.title);
+  const cardRef = useRef<HTMLDivElement>(null);
 
   return (
     <>
       <motion.div
+        ref={cardRef}
         key={s.title}
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -50,7 +52,7 @@ const ServiceCard = ({ s, i }: { s: typeof services[0]; i: number }) => {
         {/* Hover preview (desktop only) */}
         {!isMobile && (
           <AnimatePresence>
-            {hovered && interactive && <ServicePreviewHover title={s.title} />}
+            {hovered && interactive && <ServicePreviewHover title={s.title} cardRef={cardRef} />}
           </AnimatePresence>
         )}
 
@@ -86,7 +88,7 @@ const ServiceCard = ({ s, i }: { s: typeof services[0]; i: number }) => {
 };
 
 const ServicesSection = () => (
-  <section id="services" className="py-32 relative overflow-hidden">
+  <section id="services" className="py-32 relative">
     <div className="absolute inset-0">
       <div className="absolute top-1/3 right-0 w-[500px] h-[500px] bg-accent/3 rounded-full blur-[120px]" />
     </div>
