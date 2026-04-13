@@ -88,7 +88,7 @@ export function ServicePreviewModal({
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.92, y: 20 }}
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              className="fixed z-50 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90vw] max-w-md rounded-2xl border border-border bg-background shadow-[var(--premium-shadow)] overflow-hidden"
+              className="fixed z-50 inset-4 m-auto w-[90vw] max-w-md max-h-[90vh] rounded-2xl border border-border bg-background shadow-[var(--premium-shadow)] overflow-hidden flex flex-col"
             >
               <div className="flex items-center justify-between px-5 py-4 border-b border-border">
                 <span className="text-sm font-bold text-foreground">{title}</span>
@@ -96,7 +96,7 @@ export function ServicePreviewModal({
                   <X className="w-4 h-4 text-muted-foreground" />
                 </button>
               </div>
-              <div className="p-5 max-h-[80vh] overflow-y-auto">
+              <div className="p-5 overflow-y-auto flex-1">
                 <Suspense fallback={<PreviewFallback />}>
                   {renderPreview()}
                 </Suspense>
