@@ -1,9 +1,12 @@
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   Globe, AppWindow, Smartphone, Bot, Workflow, CalendarCheck,
   Target, LayoutDashboard, Calculator, MailCheck, Package,
-  Users, CreditCard, UserCircle,
+  Users, CreditCard, UserCircle, Eye,
 } from "lucide-react";
+import { useIsMobile } from "@/hooks/use-mobile";
+import { hasPreview, ServicePreviewModal, ServicePreviewHover } from "./service-previews/ServicePreviewWrapper";
 
 const services = [
   { icon: Globe, title: "Website Design & Development", desc: "Custom, conversion-focused websites built with modern frameworks and premium design." },
@@ -21,6 +24,66 @@ const services = [
   { icon: CreditCard, title: "Payment & Invoice Automation", desc: "Automated invoicing, payment collection, and financial reporting." },
   { icon: UserCircle, title: "Customer Portals", desc: "Self-service portals where customers can view orders, invoices, and project status." },
 ];
+
+const ServiceCard = ({ s, i }: { s: typeof services[0]; i: number }) => {
+  const [hovered, setHovered] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
+  const isMobile = useIsMobile();
+  const interactive = hasPreview(s.title);
+
+  return (
+    <>
+      <motion.div
+        key={s.title}
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ duration: 0.4, delay: i * 0.05 }}
+        whileHover={{ y: -6, scale: interactive ? 1.03 : 1, transition: { duration: 0.3 } }}
+        className={`group relative p-6 rounded-2xl glass-card gradient-border transition-shadow duration-500 ${
+          interactive ? "cursor-pointer" : ""
+        } hover:shadow-[var(--card-shadow-hover)]`}
+        onMouseEnter={() => !isMobile && setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+        onClick={() => interactive && setModalOpen(true)}
+      >
+        {/* Hover preview (desktop only) */}
+        {!isMobile && (
+          <AnimatePresence>
+            {hovered && interactive && <ServicePreviewHover title={s.title} />}
+          </AnimatePresence>
+        )}
+
+        <div className="flex items-start justify-between mb-4">
+          <div className="w-11 h-11 rounded-xl bg-accent/10 flex items-center justify-center border border-accent/20 group-hover:shadow-[0_0_20px_hsl(199_89%_48%/0.15)] transition-shadow duration-300">
+            <s.icon className="w-5 h-5 text-accent" />
+          </div>
+          {interactive && (
+            <div className="w-6 h-6 rounded-full bg-accent/5 border border-accent/10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <Eye className="w-3 h-3 text-accent" />
+            </div>
+          )}
+        </div>
+        <h3 className="text-sm font-bold text-foreground mb-2">{s.title}</h3>
+        <p className="text-xs text-muted-foreground leading-relaxed">{s.desc}</p>
+
+        {interactive && (
+          <div className="mt-3 text-[10px] font-medium text-accent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            Click to preview →
+          </div>
+        )}
+      </motion.div>
+
+      {interactive && (
+        <ServicePreviewModal
+          title={s.title}
+          open={modalOpen}
+          onClose={() => setModalOpen(false)}
+        />
+      )}
+    </>
+  );
+};
 
 const ServicesSection = () => (
   <section id="services" className="py-32 relative overflow-hidden">
@@ -48,21 +111,7 @@ const ServicesSection = () => (
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 max-w-7xl mx-auto">
         {services.map((s, i) => (
-          <motion.div
-            key={s.title}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.4, delay: i * 0.05 }}
-            whileHover={{ y: -6, transition: { duration: 0.3 } }}
-            className="group p-6 rounded-2xl glass-card gradient-border transition-shadow duration-500 hover:shadow-[0_20px_60px_-15px_hsl(190_90%_50%/0.12)]"
-          >
-            <div className="w-11 h-11 rounded-xl bg-accent/10 flex items-center justify-center mb-4 border border-accent/20 group-hover:shadow-[0_0_20px_hsl(190_90%_50%/0.15)] transition-shadow duration-300">
-              <s.icon className="w-5 h-5 text-accent" />
-            </div>
-            <h3 className="text-sm font-bold text-foreground mb-2">{s.title}</h3>
-            <p className="text-xs text-muted-foreground leading-relaxed">{s.desc}</p>
-          </motion.div>
+          <ServiceCard key={s.title} s={s} i={i} />
         ))}
       </div>
     </div>
