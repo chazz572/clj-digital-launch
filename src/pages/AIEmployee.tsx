@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import SampleDashboard from "./SampleDashboard";
 import { Users, Mail, Brain, GitBranch, MessageSquare } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
@@ -163,12 +164,9 @@ export default function AIEmployee() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
             className="rounded-2xl border border-border overflow-hidden shadow-2xl"
+            style={{ height: "80vh" }}
           >
-            <iframe
-              src="https://ai-s-f9d89.web.app"
-              style={{ width: "100%", height: "80vh", border: "none" }}
-              title="AI Employee Dashboard Preview"
-            />
+            <SampleDashboard />
           </motion.div>
         </div>
       </section>
