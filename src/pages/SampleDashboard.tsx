@@ -116,7 +116,7 @@ export default function AIEmployeeDashboard() {
             </div>
           ))}
 
-          <Link to="/" style={styles.sidebarBackBtn}>← Back</Link>
+          
           <div style={styles.sidebarFooter}>v0.1 • Frontend shell ready for AI + backend wiring</div>
         </aside>
 
@@ -129,7 +129,7 @@ export default function AIEmployeeDashboard() {
               <div style={styles.topbarSubtitle}>Your AI employee's control center</div>
             </div>
             <div style={styles.topbarRight}>
-              <Link to="/" style={styles.backBtn}>← Back to CJL Websites</Link>
+              
               <span style={styles.pill(dark)}>Status: <span style={{ color: "#22c55e" }}>Online</span></span>
               <button onClick={() => setDark(!dark)} style={styles.toggleBtn}>
                 Toggle Theme
