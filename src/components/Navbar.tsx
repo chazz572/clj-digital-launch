@@ -19,6 +19,13 @@ const navLinks = [
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
+  const isHome = location.pathname === "/";
+
+  const resolveHref = (href: string) => {
+    if (href.startsWith("#") && !isHome) return `/${href}`;
+    return href;
+  };
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
