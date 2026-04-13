@@ -8,6 +8,8 @@ const WebsitePreview = lazy(() => import("./WebsitePreview"));
 const AIChatPreview = lazy(() => import("./AIChatPreview"));
 const PhoneAgentPreview = lazy(() => import("./PhoneAgentPreview"));
 const DashboardPreview = lazy(() => import("./DashboardPreview"));
+const EmployeePortalPreview = lazy(() => import("./EmployeePortalPreview"));
+const CustomerPortalPreview = lazy(() => import("./CustomerPortalPreview"));
 
 const previewMap: Record<string, () => ReactNode> = {
   "Mobile App Development": () => <MobileAppPreview />,
@@ -18,6 +20,8 @@ const previewMap: Record<string, () => ReactNode> = {
   "Custom Dashboards & Internal Tools": () => <DashboardPreview />,
   "CRM & Booking System Integrations": () => <DashboardPreview />,
   "Inventory & Job Tracking Systems": () => <DashboardPreview />,
+  "Technician/Employee Portals": () => <EmployeePortalPreview />,
+  "Customer Portals": () => <CustomerPortalPreview />,
 };
 
 export function hasPreview(title: string) {
