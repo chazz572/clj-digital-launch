@@ -66,7 +66,7 @@ const Navbar = () => {
             ) : (
               <a
                 key={l.href}
-                href={l.href}
+                href={resolveHref(l.href)}
                 className="relative text-sm font-medium text-white/70 hover:text-white transition-colors duration-300 after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-accent after:transition-all after:duration-300 hover:after:w-full"
               >
                 {l.label}
@@ -75,7 +75,7 @@ const Navbar = () => {
           )}
           <ThemeToggle />
           <Button variant="hero" size="sm" className="glow-button" asChild>
-            <a href="#contact">Get a Quote</a>
+            <a href={resolveHref("#contact")}>Get a Quote</a>
           </Button>
         </div>
 
@@ -116,7 +116,7 @@ const Navbar = () => {
               ) : (
                 <motion.a
                   key={l.href}
-                  href={l.href}
+                  href={resolveHref(l.href)}
                   onClick={() => setOpen(false)}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
@@ -128,7 +128,7 @@ const Navbar = () => {
               )
             )}
             <Button size="sm" variant="hero" className="w-full glow-button" asChild>
-              <a href="#contact" onClick={() => setOpen(false)}>Get a Quote</a>
+              <a href={resolveHref("#contact")} onClick={() => setOpen(false)}>Get a Quote</a>
             </Button>
           </motion.div>
         )}
