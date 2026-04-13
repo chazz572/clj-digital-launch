@@ -51,7 +51,7 @@ const AICopilotSection = () => (
         <div className="flex items-center justify-center gap-3 mt-4 mb-6">
           <Bot className="w-8 h-8 text-accent hidden sm:block" />
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-foreground">
-            AI Copilot for Your <span className="text-gradient">Business</span>
+            AI <span className="text-gradient relative inline-block">Copilot<span className="absolute -bottom-1 left-0 w-full h-[3px] rounded-full bg-gradient-to-r from-accent via-accent/60 to-transparent" /></span> for Your Business
           </h2>
         </div>
         <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto font-medium">
