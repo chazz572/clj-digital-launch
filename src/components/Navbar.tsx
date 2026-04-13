@@ -46,7 +46,7 @@ const Navbar = () => {
       style={{ backgroundColor: scrolled ? "hsla(215, 70%, 14%, 0.85)" : "transparent" }}
     >
       <div className={`container flex items-center justify-between transition-all duration-500 ${scrolled ? "h-14" : "h-18 py-5"}`}>
-        <Link to="/" className="group flex items-center gap-0.5" aria-label="Go to homepage">
+        <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="group flex items-center gap-0.5" aria-label="Go to homepage">
           <span className="text-2xl font-black tracking-tighter text-gradient drop-shadow-sm transition-all duration-300 group-hover:tracking-normal">
             CJL
           </span>
