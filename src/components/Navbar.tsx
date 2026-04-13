@@ -12,6 +12,7 @@ const navLinks = [
   { label: "Process", href: "#process" },
   { label: "FAQ", href: "#faq" },
   { label: "Contact", href: "#contact" },
+  { label: "AI Employee", href: "/ai-employee" },
 ];
 
 const Navbar = () => {
