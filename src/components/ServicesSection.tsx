@@ -30,10 +30,12 @@ const ServiceCard = ({ s, i }: { s: typeof services[0]; i: number }) => {
   const [modalOpen, setModalOpen] = useState(false);
   const isMobile = useIsMobile();
   const interactive = hasPreview(s.title);
+  const cardRef = useRef<HTMLDivElement>(null);
 
   return (
     <>
       <motion.div
+        ref={cardRef}
         key={s.title}
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -50,7 +52,7 @@ const ServiceCard = ({ s, i }: { s: typeof services[0]; i: number }) => {
         {/* Hover preview (desktop only) */}
         {!isMobile && (
           <AnimatePresence>
-            {hovered && interactive && <ServicePreviewHover title={s.title} />}
+            {hovered && interactive && <ServicePreviewHover title={s.title} cardRef={cardRef} />}
           </AnimatePresence>
         )}
 
