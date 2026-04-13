@@ -114,7 +114,7 @@ const MobileAppPreview = ({ compact = false }: { compact?: boolean }) => {
         </div>
 
         {/* Tab bar */}
-        <div className="absolute bottom-0 left-0 right-0 h-12 bg-background/90 backdrop-blur-sm border-t border-border flex items-center justify-around px-2">
+        <div className="absolute bottom-0 left-0 right-0 h-12 bg-background/90 backdrop-blur-sm border-t border-border flex items-center justify-around px-2 rounded-b-[22px]">
           {screens.map((screen, i) => (
             <button
               key={screen.id}
