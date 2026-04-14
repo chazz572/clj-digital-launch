@@ -1,6 +1,17 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 type Section = "dashboard" | "leads" | "tasks" | "chat" | "pipeline" | "team" | "settings";
+
+function useIsMobileDashboard() {
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+  return isMobile;
+}
 
 const navItems: { label: string; key: Section; badge?: string }[] = [
   { label: "Dashboard", key: "dashboard" },
