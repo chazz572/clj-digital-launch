@@ -417,11 +417,11 @@ const styles: Record<string, any> = {
     width: 32, height: 32, borderRadius: 999,
     background: "linear-gradient(135deg, #4f46e5, #22c55e)",
   },
-  content: { padding: 20, overflowY: "auto" as const, flex: 1 },
+  content: { padding: 12, overflowY: "auto" as const, flex: 1 },
   grid: {
     display: "grid",
-    gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
-    gap: 16,
+    gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+    gap: 12,
   },
   card: (d: boolean) => ({
     background: v.card(d), borderRadius: 14,
