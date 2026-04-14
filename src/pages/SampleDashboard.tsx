@@ -98,18 +98,43 @@ export default function AIEmployeeDashboard() {
   return (
     <div className={rootClass} style={{ display: "contents" }}>
       <div style={styles.wrapper(dark)}>
+        {/* Mobile sidebar overlay */}
+        {isMobile && sidebarOpen && (
+          <div
+            onClick={() => setSidebarOpen(false)}
+            style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.5)", zIndex: 40 }}
+          />
+        )}
+
         {/* Sidebar */}
-        <aside style={styles.sidebar(dark)}>
+        <aside style={{
+          ...styles.sidebar(dark),
+          ...(isMobile ? {
+            position: "fixed" as const,
+            top: 0,
+            left: sidebarOpen ? 0 : -280,
+            bottom: 0,
+            width: 260,
+            zIndex: 50,
+            transition: "left 0.25s ease",
+          } : {}),
+        }}>
           <div style={styles.brand}>
             <div style={styles.brandLogo} />
             <span style={styles.brandTitle}>AI Employee</span>
+            {isMobile && (
+              <button
+                onClick={() => setSidebarOpen(false)}
+                style={{ marginLeft: "auto", background: "none", border: "none", color: v.muted(dark), fontSize: 20, cursor: "pointer" }}
+              >✕</button>
+            )}
           </div>
 
           <div style={styles.navSectionTitle}>Main</div>
           {navItems.map((item) => (
             <div
               key={item.key}
-              onClick={() => setActive(item.key)}
+              onClick={() => { setActive(item.key); if (isMobile) setSidebarOpen(false); }}
               style={styles.navItem(active === item.key, dark)}
             >
               {item.label}
@@ -121,7 +146,7 @@ export default function AIEmployeeDashboard() {
           {systemItems.map((item) => (
             <div
               key={item.key}
-              onClick={() => setActive(item.key)}
+              onClick={() => { setActive(item.key); if (isMobile) setSidebarOpen(false); }}
               style={styles.navItem(active === item.key, dark)}
             >
               {item.label}
@@ -136,17 +161,24 @@ export default function AIEmployeeDashboard() {
         <div style={styles.main}>
           {/* Topbar */}
           <header style={styles.topbar(dark)}>
-            <div>
-              <div style={styles.topbarTitle}>{active.charAt(0).toUpperCase() + active.slice(1)}</div>
-              <div style={styles.topbarSubtitle}>Your AI employee's control center</div>
+            <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+              {isMobile && (
+                <button
+                  onClick={() => setSidebarOpen(true)}
+                  style={{ background: "none", border: "none", color: v.text(dark), fontSize: 22, cursor: "pointer", padding: 0 }}
+                >☰</button>
+              )}
+              <div>
+                <div style={styles.topbarTitle}>{active.charAt(0).toUpperCase() + active.slice(1)}</div>
+                {!isMobile && <div style={styles.topbarSubtitle}>Your AI employee's control center</div>}
+              </div>
             </div>
             <div style={styles.topbarRight}>
-              
-              <span style={styles.pill(dark)}>Status: <span style={{ color: "#22c55e" }}>Online</span></span>
+              {!isMobile && <span style={styles.pill(dark)}>Status: <span style={{ color: "#22c55e" }}>Online</span></span>}
               <button onClick={() => setDark(!dark)} style={styles.toggleBtn}>
-                Toggle Theme
+                {isMobile ? (dark ? "☀" : "🌙") : "Toggle Theme"}
               </button>
-              <div style={styles.avatar} />
+              {!isMobile && <div style={styles.avatar} />}
             </div>
           </header>
 
