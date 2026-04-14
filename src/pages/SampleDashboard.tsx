@@ -65,6 +65,8 @@ const settingsRows = [
 export default function AIEmployeeDashboard() {
   const [dark, setDark] = useState(false);
   const [active, setActive] = useState<Section>("dashboard");
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const isMobile = useIsMobileDashboard();
   const [tasks, setTasks] = useState(initialTasks);
   const [taskInput, setTaskInput] = useState("");
   const [chatMessages, setChatMessages] = useState([
