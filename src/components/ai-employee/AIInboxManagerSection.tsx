@@ -118,9 +118,9 @@ export default function AIInboxManagerSection() {
               {/* Mockup top bar */}
               <div className="flex items-center gap-2 px-4 py-2.5 border-b border-border bg-muted/30">
                 <div className="flex gap-1.5">
-                  <span className="w-2.5 h-2.5 rounded-full bg-red-400/60" />
-                  <span className="w-2.5 h-2.5 rounded-full bg-yellow-400/60" />
-                  <span className="w-2.5 h-2.5 rounded-full bg-green-400/60" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-destructive/60" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-accent/60" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-primary/60" />
                 </div>
                 <span className="text-[10px] text-muted-foreground ml-2 font-medium">AI Inbox Manager</span>
               </div>
