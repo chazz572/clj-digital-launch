@@ -261,7 +261,7 @@ export default function AIPhoneAgentSection() {
             Let your AI Phone Agent handle every ring so you can focus on running your business.
           </p>
           <Button variant="hero" size="lg" className="glow-button text-base px-8 py-6" asChild>
-            <a href="#wizard">
+            <a href="/#contact">
               Add AI Phone Agent to Your Business
               <ArrowRight className="w-4 h-4 ml-1" />
             </a>
