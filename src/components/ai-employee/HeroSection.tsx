@@ -102,13 +102,13 @@ export default function AIEmployeeHero() {
           className="flex flex-col sm:flex-row items-center justify-center gap-4"
         >
           <Button variant="hero" size="lg" className="glow-button text-base px-8 py-6" asChild>
-            <a href="#live-demo">
-              Try Live Demo
+            <a href="/#contact">
+              Get Started
               <ArrowDown className="w-4 h-4 ml-1" />
             </a>
           </Button>
           <Button variant="outline" size="lg" className="text-base px-8 py-6" asChild>
-            <a href="#wizard">Build Your AI Employee</a>
+            <a href="/#contact">Learn More</a>
           </Button>
         </motion.div>
 

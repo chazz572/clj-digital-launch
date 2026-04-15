@@ -28,7 +28,7 @@ export default function FinalCTA() {
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Button variant="hero" size="lg" className="glow-button text-base px-8 py-6" asChild>
-                <a href="#wizard">Build Your AI Employee</a>
+                <a href="/#contact">Build Your AI Employee</a>
               </Button>
               <Button variant="outline" size="lg" className="text-base px-8 py-6" asChild>
                 <a href="/#contact">Book a Demo</a>
