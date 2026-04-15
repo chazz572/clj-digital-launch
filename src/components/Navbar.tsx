@@ -14,6 +14,7 @@ const navLinks = [
   { label: "FAQ", href: "#faq" },
   { label: "Contact", href: "#contact" },
   { label: "AI Employee", href: "/ai-employee" },
+  { label: "AI Phone Agent", href: "/ai-phone-agent" },
 ];
 
 const Navbar = () => {
