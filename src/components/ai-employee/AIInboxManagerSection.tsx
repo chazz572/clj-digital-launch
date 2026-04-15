@@ -190,8 +190,8 @@ export default function AIInboxManagerSection() {
                       Sarah Kim is interested in a full website redesign for her bakery. Budget: ~$2k. Timeline: 4 weeks. Decision maker. High intent.
                     </p>
                     <div className="flex items-center gap-1 mt-2">
-                      <Star className="w-3 h-3 text-yellow-400" />
-                      <span className="text-[9px] font-medium text-yellow-400">Lead Score: 92/100</span>
+                    <Star className="w-3 h-3 text-accent" />
+                      <span className="text-[9px] font-medium text-accent">Lead Score: 92/100</span>
                     </div>
                   </motion.div>
 
