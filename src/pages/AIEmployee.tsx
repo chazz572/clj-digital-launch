@@ -89,6 +89,8 @@ export default function AIEmployee() {
       {/* 10 — Behind the Scenes */}
       <BehindTheScenes />
 
+      {/* 11 — AI Phone Agent */}
+      <AIPhoneAgentSection />
 
       {/* 12 — Final CTA */}
       <FinalCTA />
