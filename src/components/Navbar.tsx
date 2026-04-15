@@ -15,6 +15,7 @@ const navLinks = [
   { label: "Contact", href: "#contact" },
   { label: "AI Employee", href: "/ai-employee" },
   { label: "AI Phone Agent", href: "/ai-phone-agent" },
+  { label: "AI Inbox", href: "/ai-inbox-manager" },
 ];
 
 const Navbar = () => {

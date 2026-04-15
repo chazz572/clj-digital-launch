@@ -9,6 +9,7 @@ import NotFound from "./pages/NotFound.tsx";
 import Unsubscribe from "./pages/Unsubscribe.tsx";
 import AIEmployee from "./pages/AIEmployee.tsx";
 import AIPhoneAgent from "./pages/AIPhoneAgent.tsx";
+import AIInboxManager from "./pages/AIInboxManager.tsx";
 import SampleDashboard from "./pages/SampleDashboard.tsx";
 
 const queryClient = new QueryClient();
@@ -26,6 +27,7 @@ const App = () => (
             <Route path="/ai-employee" element={<AIEmployee />} />
             <Route path="/sample-dashboard" element={<SampleDashboard />} />
             <Route path="/ai-phone-agent" element={<AIPhoneAgent />} />
+            <Route path="/ai-inbox-manager" element={<AIInboxManager />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
