@@ -55,38 +55,51 @@ const Navbar = () => {
           <span className="text-2xl font-black text-accent" style={{ animation: "pulse-glow 2s infinite" }}>.</span>
         </Link>
 
-        <div className="hidden md:flex items-center gap-8">
-          {navLinks.map((l) =>
-            l.href.startsWith("/") ? (
-              <Link
-                key={l.href}
-                to={l.href}
-                className="relative text-sm font-medium text-foreground/70 hover:text-foreground dark:text-white/70 dark:hover:text-white transition-colors duration-300 after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-accent after:transition-all after:duration-300 hover:after:w-full"
-              >
-                {l.label}
-              </Link>
-            ) : (
-              <a
-                key={l.href}
-                href={resolveHref(l.href)}
-                className="relative text-sm font-medium text-foreground/70 hover:text-foreground dark:text-white/70 dark:hover:text-white transition-colors duration-300 after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-accent after:transition-all after:duration-300 hover:after:w-full"
-              >
-                {l.label}
-              </a>
-            )
-          )}
-          <ThemeToggle />
-          <Button variant="hero" size="sm" className="glow-button" asChild>
-            <a href={resolveHref("#contact")}>Get a Quote</a>
-          </Button>
-        </div>
+        {(() => {
+          // On homepage or when scrolled (dark navy bg), always use white text.
+          // On subpages unscrolled in light mode, use dark text.
+          const linkClass = (isHome || scrolled)
+            ? "text-white/70 hover:text-white"
+            : "text-foreground/70 hover:text-foreground dark:text-white/70 dark:hover:text-white";
+          const afterClass = "after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-accent after:transition-all after:duration-300 hover:after:w-full";
 
-        <div className="md:hidden flex items-center gap-2">
-          <ThemeToggle />
-          <button className="p-2 text-foreground dark:text-white" onClick={() => setOpen(!open)}>
-            {open ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-          </button>
-        </div>
+          return (
+            <>
+              <div className="hidden md:flex items-center gap-8">
+                {navLinks.map((l) =>
+                  l.href.startsWith("/") ? (
+                    <Link
+                      key={l.href}
+                      to={l.href}
+                      className={`relative text-sm font-medium transition-colors duration-300 ${linkClass} ${afterClass}`}
+                    >
+                      {l.label}
+                    </Link>
+                  ) : (
+                    <a
+                      key={l.href}
+                      href={resolveHref(l.href)}
+                      className={`relative text-sm font-medium transition-colors duration-300 ${linkClass} ${afterClass}`}
+                    >
+                      {l.label}
+                    </a>
+                  )
+                )}
+                <ThemeToggle />
+                <Button variant="hero" size="sm" className="glow-button" asChild>
+                  <a href={resolveHref("#contact")}>Get a Quote</a>
+                </Button>
+              </div>
+
+              <div className="md:hidden flex items-center gap-2">
+                <ThemeToggle />
+                <button className={`p-2 ${(isHome || scrolled) ? "text-white" : "text-foreground dark:text-white"}`} onClick={() => setOpen(!open)}>
+                  {open ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+                </button>
+              </div>
+            </>
+          );
+        })()}
       </div>
 
       <AnimatePresence>
