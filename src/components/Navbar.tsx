@@ -42,13 +42,14 @@ const Navbar = () => {
       transition={{ duration: 0.6, ease: "easeOut" }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-primary/90 backdrop-blur-xl border-b border-accent/10 shadow-[0_4px_30px_-10px_hsl(var(--accent)/0.15)]"
-          : "bg-primary/80 backdrop-blur-md border-b border-accent/10"
+          ? "backdrop-blur-xl border-b border-accent/10 shadow-[0_4px_30px_-10px_hsl(var(--accent)/0.15)]"
+          : "backdrop-blur-md border-b border-transparent"
       }`}
+      style={{ backgroundColor: scrolled ? "hsla(215, 70%, 14%, 0.85)" : "transparent" }}
     >
       <div className={`container flex items-center justify-between transition-all duration-500 ${scrolled ? "h-14" : "h-18 py-5"}`}>
         <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="group flex items-center gap-0.5" aria-label="Go to homepage">
-          <span className="bg-gradient-to-r from-primary-foreground via-accent to-primary-foreground bg-clip-text text-2xl font-black tracking-tighter text-transparent drop-shadow-sm transition-all duration-300 group-hover:tracking-normal">
+          <span className="text-2xl font-black tracking-tighter text-gradient drop-shadow-sm transition-all duration-300 group-hover:tracking-normal">
             CJL
           </span>
           <span className="text-2xl font-black text-accent" style={{ animation: "pulse-glow 2s infinite" }}>.</span>
