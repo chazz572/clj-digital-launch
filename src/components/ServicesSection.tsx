@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import {
-  Globe, AppWindow, Smartphone, Bot, Workflow, CalendarCheck,
+  Bot, Workflow, CalendarCheck,
   Target, LayoutDashboard, Calculator, MailCheck, Package,
   Users, CreditCard, UserCircle, Eye,
 } from "lucide-react";
@@ -9,9 +9,6 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import { hasPreview, ServicePreviewModal } from "./service-previews/ServicePreviewWrapper";
 
 const services = [
-  { icon: Globe, title: "Website Design & Development", desc: "Custom, conversion-focused websites built with modern frameworks and premium design." },
-  { icon: AppWindow, title: "Web App Development", desc: "Full-stack web applications with real-time data, user auth, and scalable architecture." },
-  { icon: Smartphone, title: "Mobile App Development", desc: "Cross-platform iOS and Android apps built with Flutter and React Native." },
   { icon: Bot, title: "AI‑Powered Tools & Automations", desc: "Smart assistants, automated workflows, and AI integrations that save time and boost revenue." },
   { icon: Workflow, title: "Workflow & SOP Optimization", desc: "Turn messy processes into clean, automated systems that scale with your business." },
   { icon: CalendarCheck, title: "CRM & Booking System Integrations", desc: "Connect your site to Stripe, Calendly, Jobber, GoHighLevel, and more." },
