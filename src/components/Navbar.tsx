@@ -6,9 +6,10 @@ import { Link, useLocation } from "react-router-dom";
 import ThemeToggle from "./ThemeToggle";
 
 const navLinks = [
+  { label: "Websites & Apps", href: "#websites-apps" },
+  { label: "AI Copilot", href: "#ai-copilot" },
   { label: "Services", href: "#services" },
   { label: "Pricing", href: "#pricing" },
-  { label: "Portfolio", href: "#portfolio" },
   { label: "Why CJL", href: "#why" },
   { label: "Process", href: "#process" },
   { label: "FAQ", href: "#faq" },
