@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import {
-  Globe, AppWindow, Smartphone, Bot, Workflow, CalendarCheck,
+  Bot, Workflow, CalendarCheck,
   Target, LayoutDashboard, Calculator, MailCheck, Package,
   Users, CreditCard, UserCircle, Eye,
 } from "lucide-react";
