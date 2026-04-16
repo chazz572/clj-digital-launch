@@ -9,19 +9,7 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import { hasPreview, ServicePreviewModal } from "./service-previews/ServicePreviewWrapper";
 
 const services = [
-const services = [
   { icon: Bot, title: "AI‑Powered Tools & Automations", desc: "Smart assistants, automated workflows, and AI integrations that save time and boost revenue." },
-  { icon: Workflow, title: "Workflow & SOP Optimization", desc: "Turn messy processes into clean, automated systems that scale with your business." },
-  { icon: CalendarCheck, title: "CRM & Booking System Integrations", desc: "Connect your site to Stripe, Calendly, Jobber, GoHighLevel, and more." },
-  { icon: Target, title: "Lead Capture & Reputation Systems", desc: "Automated review requests, lead funnels, and SMS/email follow-ups." },
-  { icon: LayoutDashboard, title: "Custom Dashboards & Internal Tools", desc: "Inventory tracking, job management, employee portals, and customer dashboards." },
-  { icon: Calculator, title: "Instant Quote Systems", desc: "Let customers get instant pricing with smart, dynamic quote calculators." },
-  { icon: MailCheck, title: "Automated Follow‑Ups", desc: "AI-driven text and email sequences that nurture leads and close deals." },
-  { icon: Package, title: "Inventory & Job Tracking Systems", desc: "Real-time tracking for inventory, jobs, and field operations." },
-  { icon: Users, title: "Technician/Employee Portals", desc: "Secure portals for team members to manage tasks, schedules, and communications." },
-  { icon: CreditCard, title: "Payment & Invoice Automation", desc: "Automated invoicing, payment collection, and financial reporting." },
-  { icon: UserCircle, title: "Customer Portals", desc: "Self-service portals where customers can view orders, invoices, and project status." },
-];
   { icon: Workflow, title: "Workflow & SOP Optimization", desc: "Turn messy processes into clean, automated systems that scale with your business." },
   { icon: CalendarCheck, title: "CRM & Booking System Integrations", desc: "Connect your site to Stripe, Calendly, Jobber, GoHighLevel, and more." },
   { icon: Target, title: "Lead Capture & Reputation Systems", desc: "Automated review requests, lead funnels, and SMS/email follow-ups." },
