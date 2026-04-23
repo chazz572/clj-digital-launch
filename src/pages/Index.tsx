@@ -4,6 +4,7 @@ import TechStackStrip from "@/components/TechStackStrip";
 import ServicesSection from "@/components/ServicesSection";
 import AICopilotSection from "@/components/AICopilotSection";
 import PricingSection from "@/components/PricingSection";
+import CANIntelligenceSection from "@/components/CANIntelligenceSection";
 
 import WhySection from "@/components/WhySection";
 import ProcessSection from "@/components/ProcessSection";
@@ -21,6 +22,7 @@ const Index = () => (
     <TechStackStrip />
     <ServicesSection />
     <AICopilotSection />
+    <CANIntelligenceSection />
     <PricingSection />
     
     <WhySection />
