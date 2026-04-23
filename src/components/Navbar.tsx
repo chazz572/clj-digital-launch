@@ -30,6 +30,11 @@ const Navbar = () => {
     return href;
   };
 
+  // Treat any href that contains a hash (e.g. "#contact" or "/#can-intelligence")
+  // as an anchor link so the browser scrolls to the section, instead of letting
+  // React Router's <Link> swallow the navigation without scrolling.
+  const isAnchorHref = (href: string) => href.includes("#");
+
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
