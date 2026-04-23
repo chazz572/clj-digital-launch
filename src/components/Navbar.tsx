@@ -7,7 +7,6 @@ import ThemeToggle from "./ThemeToggle";
 
 const navLinks = [
   { label: "Services", href: "#services" },
-  { label: "CAN Platform", href: "#can-intelligence" },
   { label: "Pricing", href: "#pricing" },
   { label: "Portfolio", href: "#portfolio" },
   { label: "Why CJL", href: "#why" },
@@ -17,6 +16,7 @@ const navLinks = [
   { label: "AI Employee", href: "/ai-employee" },
   { label: "AI Phone Agent", href: "/ai-phone-agent" },
   { label: "AI Inbox", href: "/ai-inbox-manager" },
+  { label: "CAN Platform", href: "/#can-intelligence" },
 ];
 
 const Navbar = () => {
