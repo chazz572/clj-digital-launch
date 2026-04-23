@@ -30,6 +30,11 @@ const Navbar = () => {
     return href;
   };
 
+  // Treat any href that contains a hash (e.g. "#contact" or "/#can-intelligence")
+  // as an anchor link so the browser scrolls to the section, instead of letting
+  // React Router's <Link> swallow the navigation without scrolling.
+  const isAnchorHref = (href: string) => href.includes("#");
+
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
@@ -68,7 +73,7 @@ const Navbar = () => {
             <>
               <div className="hidden md:flex items-center gap-8">
                 {navLinks.map((l) =>
-                  l.href.startsWith("/") ? (
+                  l.href.startsWith("/") && !isAnchorHref(l.href) ? (
                     <Link
                       key={l.href}
                       to={l.href}
@@ -114,7 +119,7 @@ const Navbar = () => {
             style={{ backgroundColor: "hsla(215, 70%, 12%, 0.97)" }}
           >
             {navLinks.map((l, i) =>
-              l.href.startsWith("/") ? (
+              l.href.startsWith("/") && !isAnchorHref(l.href) ? (
                 <motion.div
                   key={l.href}
                   initial={{ opacity: 0, x: -20 }}
