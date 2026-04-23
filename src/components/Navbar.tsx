@@ -73,7 +73,7 @@ const Navbar = () => {
             <>
               <div className="hidden md:flex items-center gap-8">
                 {navLinks.map((l) =>
-                  l.href.startsWith("/") ? (
+                  l.href.startsWith("/") && !isAnchorHref(l.href) ? (
                     <Link
                       key={l.href}
                       to={l.href}
