@@ -119,7 +119,7 @@ const Navbar = () => {
             style={{ backgroundColor: "hsla(215, 70%, 12%, 0.97)" }}
           >
             {navLinks.map((l, i) =>
-              l.href.startsWith("/") ? (
+              l.href.startsWith("/") && !isAnchorHref(l.href) ? (
                 <motion.div
                   key={l.href}
                   initial={{ opacity: 0, x: -20 }}
