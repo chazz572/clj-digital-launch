@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import {
   FileText, Wrench, Code2, Car, FileCode2, Activity,
-  UserCheck, LineChart, Sparkles, ArrowRight, Upload,
+  UserCheck, LineChart, ArrowRight, Upload,
   Cpu, Zap, Truck, GraduationCap, Hammer,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -34,18 +34,6 @@ const CANIntelligenceSection = () => (
     </div>
 
     <div className="container relative z-10">
-      {/* Powered-by badge */}
-      <motion.div
-        initial={{ opacity: 0, y: 10 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.4 }}
-        className="absolute top-8 right-4 sm:right-8 hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-full glass-card border border-accent/20 text-[10px] font-medium tracking-wide uppercase text-accent"
-      >
-        <Sparkles className="w-3 h-3" />
-        Powered by CJL AI
-      </motion.div>
-
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
