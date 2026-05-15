@@ -9,7 +9,7 @@ const navLinks = [
   { label: "Services", href: "#services" },
   { label: "Pricing", href: "#pricing" },
   { label: "Portfolio", href: "#portfolio" },
-  { label: "Why CJL", href: "#why" },
+  { label: "Why FRXO", href: "#why" },
   { label: "Process", href: "#process" },
   { label: "FAQ", href: "#faq" },
   { label: "Contact", href: "#contact" },
@@ -56,7 +56,7 @@ const Navbar = () => {
       <div className={`container flex items-center justify-between transition-all duration-500 ${scrolled ? "h-14" : "h-18 py-5"}`}>
         <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="group flex items-center gap-0.5" aria-label="Go to homepage">
           <span className="text-2xl font-black tracking-tighter text-gradient drop-shadow-sm transition-all duration-300 group-hover:tracking-normal">
-            CJL
+            FRXO
           </span>
           <span className="text-2xl font-black text-accent" style={{ animation: "pulse-glow 2s infinite" }}>.</span>
         </Link>

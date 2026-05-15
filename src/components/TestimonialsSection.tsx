@@ -5,7 +5,7 @@ const testimonials = [
   {
     name: "Arjun Patel",
     role: "Owner, Curry Express Indian Bistro",
-    quote: "CJL built us a beautiful website with online ordering integration. Within the first month our takeout orders doubled. They understood our vision perfectly.",
+    quote: "FRXO built us a beautiful website with online ordering integration. Within the first month our takeout orders doubled. They understood our vision perfectly.",
   },
   {
     name: "Jasmine Williams",
