@@ -27,7 +27,7 @@ const Footer = () => (
         {/* Brand */}
         <div>
           <a href="#" className="group inline-flex items-center gap-0.5 mb-4">
-            <span className="text-3xl font-black tracking-tighter text-gradient">CJL</span>
+            <span className="text-3xl font-black tracking-tighter text-gradient">FRXO</span>
             <span className="text-3xl font-black text-accent" style={{ animation: "pulse-glow 2s infinite" }}>.</span>
           </a>
           <p className="text-sm text-primary-foreground/50 leading-relaxed max-w-xs">
@@ -74,7 +74,7 @@ const Footer = () => (
       {/* Bottom bar */}
       <div className="pt-8 border-t border-primary-foreground/5 flex flex-col sm:flex-row items-center justify-between gap-4">
         <p className="text-xs text-primary-foreground/25">
-          © {new Date().getFullYear()} CJL Websites. All rights reserved.
+          © {new Date().getFullYear()} FRXO. All rights reserved.
         </p>
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}

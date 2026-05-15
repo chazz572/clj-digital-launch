@@ -3,8 +3,6 @@ import { motion } from "framer-motion";
 
 const members = [
   { letter: "C", name: "Chase", phone: "8174705256", email: "chase.simpson@aol.com", linkedin: "https://www.linkedin.com/in/chase-simpson-b6a200370" },
-  { letter: "J", name: "Justin", phone: "6197801789", email: "justin.resendez16@gmail.com" },
-  { letter: "L", name: "Logan", phone: "8179460780", email: "loganeberlewalter@gmail.com" },
 ];
 
 const TeamSection = () => (
@@ -25,11 +23,11 @@ const TeamSection = () => (
           Contact
         </span>
         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-foreground mt-4">
-          Meet <span className="text-gradient">C</span>hase, <span className="text-gradient">J</span>ustin & <span className="text-gradient">L</span>ogan
+          Meet <span className="text-gradient">C</span>hase
         </h2>
       </motion.div>
 
-      <div className="grid md:grid-cols-3 gap-8">
+      <div className="grid md:grid-cols-1 gap-8 max-w-sm mx-auto">
         {members.map((m, i) => (
           <motion.div
             key={m.letter}

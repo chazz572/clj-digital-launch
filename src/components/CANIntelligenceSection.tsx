@@ -46,7 +46,7 @@ const CANIntelligenceSection = () => (
           Flagship Product
         </span>
         <h2 className="text-3xl sm:text-4xl lg:text-6xl font-extrabold tracking-tight text-foreground mt-4">
-          CJL <span className="text-gradient">CAN Intelligence</span> Platform
+          FRXO <span className="text-gradient">CAN Intelligence</span> Platform
         </h2>
         <p className="text-lg sm:text-xl text-foreground/80 mt-6 font-medium">
           Turn Raw CAN Logs Into Real Diagnostics, Insights & Reverse-Engineering Clues

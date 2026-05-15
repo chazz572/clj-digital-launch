@@ -26,7 +26,7 @@ const WhySection = () => (
         className="text-center mb-20"
       >
         <span className="inline-block px-4 py-1.5 text-xs font-semibold tracking-[0.2em] uppercase text-accent bg-accent/10 rounded-full border border-accent/20 mb-4">
-          Why CJL
+          Why FRXO
         </span>
         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-foreground mt-4">
           Why Choose <span className="text-gradient">Us</span>
